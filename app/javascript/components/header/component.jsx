@@ -28,7 +28,7 @@ class Header extends PureComponent {
     setQueryToUrl: PropTypes.func,
     myGfwLinks: PropTypes.array.isRequired,
     NavLinkComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-    openContactUsModal: PropTypes.func.isRequired,
+    openContactUsModal: PropTypes.func,
   };
 
   static defaultProps = {
