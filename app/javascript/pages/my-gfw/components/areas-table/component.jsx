@@ -224,15 +224,17 @@ class AreasTable extends PureComponent {
           areasTrimmed.map(area => (
             <div key={area.id} className="row area-row">
               <div className="column small-12 medium-9">
-                <Link to={`/dashboards/aoi/${area.id}`}>
-                  <AoICard
-                    {...area}
-                    onFetchAlerts={alertsResponse =>
-                      this.setState({
-                        alerts: { ...allAlerts, [area.id]: alertsResponse }
-                      })
-                    }
-                  />
+                <Link href="/dashboards/[...location]" as={`/dashboards/aoi/${area.id}`}>
+                  <a>
+                    <AoICard
+                      {...area}
+                      onFetchAlerts={alertsResponse =>
+                        this.setState({
+                          alerts: { ...allAlerts, [area.id]: alertsResponse }
+                        })
+                      }
+                    />
+                  </a>
                 </Link>
               </div>
               <div className="column small-12 medium-3">

@@ -3,13 +3,10 @@ import isEmpty from 'lodash/isEmpty';
 
 import { getAllAreas } from 'providers/areas-provider/selectors';
 
-const selectAreaOfInterestModalState = state =>
-  state.location &&
-  state.location.query &&
-  state.location.query.areaOfInterestModal;
+const selectAreaOfInterestModalState = state => state?.location?.query?.areaOfInterestModal;
 const selectLoading = state => state.areas && state.areas.loading;
 const selectUserData = state => state.myGfw && state.myGfw.data;
-const selectLocation = state => state.location && state.location.payload;
+const selectLocation = state => state.location;
 
 export const getAOIModalOpen = createSelector(
   [selectAreaOfInterestModalState],
@@ -21,7 +18,7 @@ export const getActiveArea = createSelector(
   (location, settings, areas) => {
     if (isEmpty(areas)) return null;
     let activeAreaId = '';
-    if (location.type === 'aoi') {
+    if (location?.type === 'aoi') {
       activeAreaId = location.adm0;
     } else {
       activeAreaId = settings && settings.activeAreaId;

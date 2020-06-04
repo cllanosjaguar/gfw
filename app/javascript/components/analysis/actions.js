@@ -42,14 +42,11 @@ const getErrorMessage = (error, file) => {
 // url action
 export const setAnalysisSettings = createThunkAction(
   'setAnalysisSettings',
-  change => (dispatch, state) => {
-    dispatch(
-      setComponentStateToUrl({
-        key: 'analysis',
-        change,
-        state
-      })
-    );
+  change => () => {
+    setComponentStateToUrl({
+      key: 'analysis',
+      change,
+    })
   }
 );
 
@@ -101,7 +98,6 @@ export const getAnalysis = createThunkAction(
             error: errorMessage
           })
         );
-        console.info(error);
       });
   }
 );

@@ -27,7 +27,7 @@ export const getAreasProvider = createThunkAction(
     dispatch(setAreasLoading({ loading: true, error: false }));
     getAreas()
       .then(areas => {
-        const { type, adm0 } = location.payload || {};
+        const { type, adm0 } = location || {};
         if (areas && !!areas.length) {
           dispatch(setAreas(areas));
           if (
@@ -47,7 +47,6 @@ export const getAreasProvider = createThunkAction(
                     error: error.response.status
                   })
                 );
-                console.info(error);
               });
           } else {
             dispatch(setAreasLoading({ loading: false, error: false }));

@@ -8,14 +8,11 @@ export const setModalMetaClosing = createAction('setModalMetaClosing');
 
 export const setModalMetaSettings = createThunkAction(
   'setModalMetaSettings',
-  change => (dispatch, state) =>
-    dispatch(
-      setComponentStateToUrl({
-        key: 'modalMeta',
-        change,
-        state
-      })
-    )
+  change => () =>
+    setComponentStateToUrl({
+      key: 'modalMeta',
+      change,
+    })
 );
 
 export const getModalMetaData = createThunkAction(
@@ -28,8 +25,7 @@ export const getModalMetaData = createThunkAction(
         .then(response => {
           dispatch(setModalMetaData(response.data));
         })
-        .catch(error => {
-          console.info(error);
+        .catch(() => {
           dispatch(setModalMetaLoading({ loading: false, error: true }));
         });
     }

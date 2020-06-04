@@ -16,13 +16,10 @@ export const setMapPromptsSettings = createThunkAction(
       force ||
       (showPrompts && (!promptsViewed || !promptsViewed.includes(stepsKey)))
     ) {
-      dispatch(
-        setComponentStateToUrl({
-          key: 'mapPrompts',
-          change,
-          state
-        })
-      );
+      setComponentStateToUrl({
+        key: 'mapPrompts',
+        change,
+      })
       if (stepsKey) {
         track('userPrompt', {
           label: `${stepsKey}: ${(stepIndex || 0) + 1}`

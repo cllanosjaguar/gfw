@@ -4,9 +4,8 @@ import isEmpty from 'lodash/isEmpty';
 import flatMap from 'lodash/flatMap';
 import uniq from 'lodash/uniq';
 
-export const selectAreaLoading = state => state.areas && state.areas.loading;
-export const selectLocation = state =>
-  state && state.location && state.location.payload;
+export const selectAreaLoading = state => state?.areas?.loading;
+export const selectLocation = state => state.location;
 export const selectLoggedIn = state =>
   state && !!state.myGfw && !isEmpty(state.myGfw.data);
 

@@ -24,14 +24,11 @@ export const setRecentImageryLoadingMoreTiles = createAction(
 
 export const setRecentImagerySettings = createThunkAction(
   'setRecentImagerySettings',
-  change => (dispatch, state) =>
-    dispatch(
-      setComponentStateToUrl({
-        key: 'recentImagery',
-        change,
-        state
-      })
-    )
+  change => () =>
+    setComponentStateToUrl({
+      key: 'recentImagery',
+      change,
+    })
 );
 
 export const getRecentImageryData = createThunkAction(
@@ -69,9 +66,8 @@ export const getRecentImageryData = createThunkAction(
             dispatch(setRecentImageryLoading({ loading: false, error: false }));
           }
         })
-        .catch(error => {
+        .catch(() => {
           dispatch(setRecentImageryLoading({ loading: false, error: true }));
-          console.info(error);
         });
     }
   }

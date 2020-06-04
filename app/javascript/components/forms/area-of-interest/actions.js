@@ -28,7 +28,7 @@ export const saveAreaOfInterest = createThunkAction(
   }) => (dispatch, getState) => {
     const { location, geostore } = getState();
     const { data: geostoreData } = geostore || {};
-    const { payload: { type, adm0, adm1, adm2 } } = location || {};
+    const { type, adm0, adm1, adm2 } = location || {};
     const isCountry = type === 'country';
 
     const postData = {

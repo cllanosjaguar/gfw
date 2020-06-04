@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import Link from 'next/link';
 
 import Loader from 'components/ui/loader';
 import Button from 'components/ui/button';
@@ -22,11 +23,12 @@ class MyGFWPage extends PureComponent {
   static propTypes = {
     loggedIn: PropTypes.bool,
     loading: PropTypes.bool,
+    loggingIn: PropTypes.bool,
     areas: PropTypes.array
   };
 
   render() {
-    const { loggedIn, loading, areas } = this.props;
+    const { loggedIn, loading, areas, loggingIn } = this.props;
 
     return (
       <div className={cx('l-my-gfw-page', { login: !loggedIn })}>
@@ -68,20 +70,25 @@ class MyGFWPage extends PureComponent {
                         </div>
                         <div className="column small-12 medium-6">
                           <h4>
-                              You haven’t created any Areas of Interest yet
+                            You haven’t created any Areas of Interest yet
                           </h4>
                           <p>
-                              Creating an Area of Interest lets you customize
-                              and perform an in-depth analysis of the area, as
-                              well as receiving email notifications when new
-                              deforestation alerts are available.
+                            Creating an Area of Interest lets you customize
+                            and perform an in-depth analysis of the area, as
+                            well as receiving email notifications when new
+                            deforestation alerts are available.
                           </p>
-                          <Button
-                            className="learn-btn"
-                            link="/map?analysis=eyJzaG93RHJhdyI6ZmFsc2V9&mainMap=eyJzaG93QW5hbHlzaXMiOnRydWV9&map=eyJjZW50ZXIiOnsibGF0IjoyNywibG5nIjoxMn0sImJlYXJpbmciOjAsInBpdGNoIjowLCJ6b29tIjoyfQ%3D%3D&mapPrompts=eyJvcGVuIjp0cnVlLCJzdGVwc0tleSI6ImFyZWFPZkludGVyZXN0VG91ciIsInN0ZXBJbmRleCI6MCwiZm9yY2UiOnRydWV9"
-                          >
-                              Learn how
-                          </Button>
+                          <Link
+                            as="/map/[...location]"
+                            href="/map?analysis=eyJzaG93RHJhdyI6ZmFsc2V9&mainMap=eyJzaG93QW5hbHlzaXMiOnRydWV9&map=eyJjZW50ZXIiOnsibGF0IjoyNywibG5nIjoxMn0sImJlYXJpbmciOjAsInBpdGNoIjowLCJ6b29tIjoyfQ%3D%3D&mapPrompts=eyJvcGVuIjp0cnVlLCJzdGVwc0tleSI6ImFyZWFPZkludGVyZXN0VG91ciIsInN0ZXBJbmRleCI6MCwiZm9yY2UiOnRydWV9">
+                            <a>
+                              <Button
+                                className="learn-btn"
+                              >
+                                Learn how
+                              </Button>
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     )}
@@ -98,7 +105,11 @@ class MyGFWPage extends PureComponent {
         ) : (
           <div className="row">
             <div className="column small-12 medium-10 medium-offset-1 large-8 large-offset-2">
-              <LoginForm />
+              {loggingIn ?
+                <Loader />
+                :
+                <LoginForm />
+              }
             </div>
           </div>
         )}

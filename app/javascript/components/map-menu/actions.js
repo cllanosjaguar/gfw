@@ -10,14 +10,11 @@ export const setMenuLoading = createAction('setMenuLoading');
 
 export const setMenuSettings = createThunkAction(
   'setMenuSettings',
-  change => (dispatch, state) => {
-    dispatch(
-      setComponentStateToUrl({
-        key: 'menu',
-        change,
-        state
-      })
-    );
+  change => () => {
+    setComponentStateToUrl({
+      key: 'menu',
+      change,
+    })
   }
 );
 
@@ -80,8 +77,7 @@ export const getLocationFromSearch = createThunkAction(
             }
             dispatch(setMenuLoading(false));
           })
-          .catch(error => {
-            console.info(error);
+          .catch(() => {
             dispatch(setMenuLoading(false));
           });
       }

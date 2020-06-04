@@ -16,13 +16,10 @@ export const setDashboardPromptsSettings = createThunkAction(
       force ||
       (showPrompts && (!promptsViewed || !promptsViewed.includes(stepsKey)))
     ) {
-      dispatch(
-        setComponentStateToUrl({
-          key: 'dashboardPrompts',
-          change,
-          state
-        })
-      );
+      setComponentStateToUrl({
+        key: 'dashboardPrompts',
+        change,
+      })
       if (stepsKey) {
         track('userPrompt', {
           label: `${stepsKey}: ${stepIndex + 1}`

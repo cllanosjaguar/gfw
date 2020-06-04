@@ -22,24 +22,20 @@ export const getWidgetsData = createThunkAction(
           })
         );
       })
-      .catch(error => {
+      .catch(() => {
         dispatch(setWidgetsLoading({ error: true, loading: false }));
-        console.info(error);
       });
   }
 );
 
 export const setWidgetSettings = createThunkAction(
   'setWidgetSettings',
-  ({ change, widget }) => (dispatch, state) => {
-    dispatch(
-      setComponentStateToUrl({
-        key: 'widget',
-        subKey: widget,
-        change,
-        state
-      })
-    );
+  ({ change, widget }) => (dispatch) => {
+    setComponentStateToUrl({
+      key: 'widget',
+      subKey: widget,
+      change,
+    })
     track('changeWidgetSettings', {
       label: `${widget}`
     });

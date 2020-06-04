@@ -4,14 +4,11 @@ import { setComponentStateToUrl } from 'utils/stateToUrl';
 
 export const setMainMapSettings = createThunkAction(
   'setMainMapSettings',
-  change => (dispatch, state) =>
-    dispatch(
-      setComponentStateToUrl({
-        key: 'mainMap',
-        change,
-        state
-      })
-    )
+  change => () =>
+    setComponentStateToUrl({
+      key: 'mainMap',
+      change
+    })
 );
 
 export const setMainMapAnalysisView = createThunkAction(
