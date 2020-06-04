@@ -136,7 +136,7 @@
     "react-spring": "^9.0.0-rc.3",
     "react-stickynode": "1.4.1",
     "react-tagsinput": "^3.19.0",
-    "react-tippy": "1.2.2",
+    "react-tippy": "^1.4.0",
     "react-toggle": "^4.1.1",
     "react-youtube": "^7.9.0",
     "recharts": "^1.7.1",
