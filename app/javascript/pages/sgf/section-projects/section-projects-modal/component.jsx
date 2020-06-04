@@ -9,7 +9,7 @@ import './styles.scss';
 class SectionProjectsModal extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
-    setSGFModal: PropTypes.func,
+    setSectionProjectsModalSlug: PropTypes.func,
     slug: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
@@ -110,7 +110,7 @@ class SectionProjectsModal extends PureComponent {
   }
 
   handleClose = () => {
-    this.props.setSGFModal('');
+    this.props.setSectionProjectsModalSlug('');
   };
 
   render() {

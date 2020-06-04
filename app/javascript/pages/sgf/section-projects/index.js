@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { scroller } from 'react-scroll';
 import reducerRegistry from 'app/registry';
 
+import * as modalActions from 'pages/sgf/section-projects/section-projects-modal/actions';
 import * as actions from './actions';
 
 import reducers, { initialState } from './reducers';
@@ -48,7 +49,7 @@ class SectionProjectsContainer extends PureComponent {
     setCustomFilter: PropTypes.func,
     fetchProjects: PropTypes.func,
     fetchProjectsImages: PropTypes.func,
-    setSGFModal: PropTypes.func,
+    setSectionProjectsModalSlug: PropTypes.func,
   };
 
   componentDidMount() {
@@ -58,7 +59,7 @@ class SectionProjectsContainer extends PureComponent {
   }
 
   handleOpenModal = (slug) => {
-    this.props.setSGFModal(slug);
+    this.props.setSectionProjectsModalSlug(slug);
   };
 
   handleGlobeClick = (d) => {
@@ -91,4 +92,6 @@ reducerRegistry.registerModule('sgfProjects', {
   initialState,
 });
 
-export default connect(mapStateToProps, actions)(SectionProjectsContainer);
+export default connect(mapStateToProps, { ...actions, ...modalActions })(
+  SectionProjectsContainer
+);

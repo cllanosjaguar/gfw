@@ -35,11 +35,6 @@ const setCustomFilter = (state, { payload }) => ({
   customFilter: payload,
 });
 
-const setSGFModal = (state, { payload }) => ({
-  ...state,
-  sgfModal: payload,
-});
-
 const setSearch = (state, { payload }) => ({
   ...state,
   search: payload,
@@ -49,7 +44,6 @@ const setSearch = (state, { payload }) => ({
 export default {
   [actions.setProjectsLoading]: setProjectsLoading,
   [actions.setProjectsData]: setProjectsData,
-  [actions.setSGFModal]: setSGFModal,
   [actions.setCategorySelected]: setCategorySelected,
   [actions.setSearch]: setSearch,
   [actions.setCustomFilter]: setCustomFilter,

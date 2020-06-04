@@ -2,21 +2,18 @@ import { connect } from 'react-redux';
 
 import { getProjectsWithImages } from 'pages/sgf/section-projects/selectors';
 
-import { setSGFModal } from '../actions';
-
+import * as actions from './actions';
 import SectionProjectsModalComponent from './component';
 
-const mapStateToProps = ({ sgfProjects }) => {
-  const { data, sgfModal } = sgfProjects || {};
-  const { projects, images } = data || {};
+const mapStateToProps = ({ location, sgfProjects }) => {
+  const slug = location && location.query && location.query.sgfModal;
+  const { projects, images } = (sgfProjects && sgfProjects.data) || {};
   const allProjects = getProjectsWithImages({ data: projects, images });
 
   return {
-    data: allProjects?.find((p) => p.id === parseInt(sgfModal, 10)),
-    slug: sgfModal,
+    slug,
+    data: allProjects && allProjects.find((p) => p.id === parseInt(slug, 10)),
   };
 };
 
-export default connect(mapStateToProps, { setSGFModal })(
-  SectionProjectsModalComponent
-);
+export default connect(mapStateToProps, actions)(SectionProjectsModalComponent);
