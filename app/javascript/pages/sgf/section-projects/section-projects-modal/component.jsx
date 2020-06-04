@@ -7,12 +7,18 @@ import Carousel from 'components/ui/carousel';
 import './styles.scss';
 
 class SectionProjectsModal extends PureComponent {
+  static propTypes = {
+    data: PropTypes.object,
+    setSGFModal: PropTypes.func,
+    slug: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  };
+
   parseContent = (html, className) => {
     return (
       <div className={className}>
         {ReactHtmlParser(html, {
-          transform: node =>
-            (node.name === 'a' ? (
+          transform: (node) =>
+            node.name === 'a' ? (
               <a
                 key={node.attribs.href}
                 href={node.attribs.href}
@@ -23,11 +29,11 @@ class SectionProjectsModal extends PureComponent {
               </a>
             ) : (
               ''
-            ))
+            ),
         })}
       </div>
     );
-  }
+  };
 
   getContent() {
     const { data } = this.props;
@@ -49,55 +55,53 @@ class SectionProjectsModal extends PureComponent {
             <h2>{data.meta}</h2>
           </span>
         </div>
-        {data.images &&
-          data.images.length > 1 && (
-            <Carousel
-              className="modal-image-slider element-fullwidth"
-              settings={{
-                slidesToShow: 1,
-                arrows: false,
-                dots: true,
-                infinite: false
-              }}
-            >
-              {data.images &&
-                data.images.map(c => (
-                  <div key={c} className="image">
-                    <div
-                      style={{
-                        backgroundImage: `url(${c})`
-                      }}
-                    />
-                  </div>
-                ))}
-            </Carousel>
-          )}
-        {data.image &&
-          data.images.length === 1 && (
-            <div
-              className="image element-fullwidth"
-              style={{
-                backgroundImage: `url(${data.image})`
-              }}
-            />
-          )}
+        {data.images && data.images.length > 1 && (
+          <Carousel
+            className="modal-image-slider element-fullwidth"
+            settings={{
+              slidesToShow: 1,
+              arrows: false,
+              dots: true,
+              infinite: false,
+              lazyLoad: true,
+            }}
+          >
+            {data.images &&
+              data.images.map((c) => (
+                <div key={c} className="image">
+                  <div
+                    style={{
+                      backgroundImage: `url("${c}")`,
+                    }}
+                  />
+                </div>
+              ))}
+          </Carousel>
+        )}
+        {data.image && data.images.length === 1 && (
+          <div
+            className="image element-fullwidth"
+            style={{
+              backgroundImage: `url(${data.image})`,
+            }}
+          />
+        )}
         <div className="content">
           {data.description &&
             this.parseContent(data.description, 'description')}
-          {data.blogSentence &&
-            data.blogLink && (
-              <a
-                className="links"
-                href={data.blogLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {data.blogSentence}
-              </a>
-            )}
+          {data.blogSentence && data.blogLink && (
+            <a
+              className="links"
+              href={data.blogLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {data.blogSentence}
+            </a>
+          )}
           {data.categories && (
             <p className="categories">
-              {data.categories.filter(i => i).join(', ')}
+              {data.categories.filter((i) => i).join(', ')}
             </p>
           )}
         </div>
@@ -106,7 +110,7 @@ class SectionProjectsModal extends PureComponent {
   }
 
   handleClose = () => {
-    this.props.setSectionProjectsModalSlug('');
+    this.props.setSGFModal('');
   };
 
   render() {
@@ -118,11 +122,5 @@ class SectionProjectsModal extends PureComponent {
     );
   }
 }
-
-SectionProjectsModal.propTypes = {
-  data: PropTypes.object,
-  slug: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  setSectionProjectsModalSlug: PropTypes.func.isRequired
-};
 
 export default SectionProjectsModal;

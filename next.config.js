@@ -45,6 +45,10 @@ const nextConfig = {
           source: '/dashboards',
           destination: `/dashboards/global`,
         },
+        {
+          source: '/grants-and-fellowships',
+          destination: `/grants-and-fellowships/projects`,
+        },
       ];
     },
   },

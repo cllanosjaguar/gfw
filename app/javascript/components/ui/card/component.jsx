@@ -21,11 +21,11 @@ class Card extends PureComponent {
     active: PropTypes.bool,
     tag: PropTypes.string,
     tagColor: PropTypes.string,
-    clamp: PropTypes.number
+    clamp: PropTypes.number,
   };
 
   state = {
-    selectorValue: {}
+    selectorValue: {},
   };
 
   // eslint-disable-line react/prefer-stateless-function
@@ -43,21 +43,22 @@ class Card extends PureComponent {
       buttons,
       tag,
       tagColor,
-      selector
-    } =
-      data || {};
+      selector,
+    } = data || {};
     const { selectorValue } = this.state;
 
     return (
       <div className={cx('c-card', className, theme, { active })}>
-        {tag &&
-          tagColor && (
+        {tag && tagColor && (
           <span className="tag" style={{ backgroundColor: tagColor }}>
             <p>{tag}</p>
           </span>
         )}
         {image && (
-          <div className="image" style={{ backgroundImage: `url(${image})` }} />
+          <div
+            className="image"
+            style={{ backgroundImage: `url('${image}')` }}
+          />
         )}
         {(img1x || img2x) && (
           <img
@@ -140,25 +141,23 @@ class Card extends PureComponent {
                   selectorValue.value ||
                   (selector.options && selector.options[0])
                 }
-                onChange={value =>
+                onChange={(value) =>
                   this.setState({
                     selectorValue:
                       selector.options &&
-                      selector.options.find(o => o.value === value)
-                  })
-                }
+                      selector.options.find((o) => o.value === value),
+                  })}
                 native
               />
-              {selectorValue.value &&
-                selectorValue.value !== 'placeholder' && (
+              {selectorValue.value && selectorValue.value !== 'placeholder' && (
                 <Button
                   className="selector-btn-link"
                   theme="square"
                   extLink={
                     selectorValue.path ||
-                      (selector.options &&
-                        selector.options[0] &&
-                        selector.options[0].path)
+                    (selector.options &&
+                      selector.options[0] &&
+                      selector.options[0].path)
                   }
                 >
                   <Icon icon={arrowIcon} />
