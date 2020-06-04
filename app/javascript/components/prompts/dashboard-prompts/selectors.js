@@ -8,8 +8,7 @@ const getDashboardPromptsState = state =>
   state.location &&
   state.location.query &&
   state.location.query.dashboardPrompts;
-export const selectShowDashboardPrompts = state =>
-  state.dashboardPrompts && state.dashboardPrompts.showPrompts;
+export const selectShowDashboardPrompts = state => state.dashboardPrompts?.showPrompts;
 
 export const getDashboardPromptsSettings = createSelector(
   [getDashboardPromptsState],

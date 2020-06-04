@@ -16,7 +16,9 @@ export const initialState = {
 };
 
 const setShowMapPrompts = (state, { payload }) => {
-  localStorage.setItem('showPrompts', payload);
+  if (!isServer) {
+    localStorage.setItem('showPrompts', payload);
+  }
   track('userPromptShowHide', {
     label: payload ? 'User enables prompts' : 'User hides prompts'
   });

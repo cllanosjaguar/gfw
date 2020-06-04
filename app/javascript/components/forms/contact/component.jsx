@@ -71,8 +71,10 @@ class ContactForm extends PureComponent {
                   </h3>
                   <p>Interested in getting news and updates from us?</p>
                   <div className="button-group">
-                    <Link to="/subscribe">
-                      <Button>Subscribe</Button>
+                    <Link href="/subscribe">
+                      <a>
+                        <Button>Subscribe</Button>
+                      </a>
                     </Link>
                     <Button
                       className="close-button"

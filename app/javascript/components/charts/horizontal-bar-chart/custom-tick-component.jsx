@@ -26,9 +26,11 @@ const CustomTick = ({ x, y, index, yAxisDotFill, data, settings }) => {
             {index === 0 ? ' are plantations' : ''}
           </a>
         ) : (
-          <Link to={path}>
-            {region} - {formatNumber({ num: total, unit: '%' })}
-            {index === 0 ? ' are plantations' : ''}
+          <Link href={path}>
+            <a>
+              {region} - {formatNumber({ num: total, unit: '%' })}
+              {index === 0 ? ' are plantations' : ''}
+            </a>
           </Link>
         )}
       </text>

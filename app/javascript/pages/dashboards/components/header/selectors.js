@@ -11,8 +11,10 @@ import {
   getActiveArea
 } from 'providers/areas-provider/selectors';
 
+const isServer = typeof window === 'undefined';
+
 // get list data
-export const selectLocation = state => state?.location?.payload;
+export const selectLocation = state => state?.location;
 export const selectLoading = state =>
   state.countryData &&
   state.areas &&
@@ -67,7 +69,7 @@ export const getDashboardTitle = createSelector(
 export const getAdminMetadata = createSelector(
   [selectLocation, selectCountryData, getAreasOptions],
   (location, countries, areas) => {
-    if (location.type === 'aoi') return areas;
+    if (location?.type === 'aoi') return areas;
     return countries;
   }
 );
@@ -111,7 +113,7 @@ export const getDownloadLink = createSelector(
     const { adm0 } = admin || {};
 
     return `https://gfw2-data.s3.amazonaws.com/country-pages/country_stats/download/${adm0 ||
-      location.adm0 ||
+      location?.adm0 ||
       'global'}.xlsx`;
   }
 );
@@ -138,9 +140,9 @@ export const getAdminsSelected = createSelector(
         (adm2s && adm2s.find(i => i.value === location.adm2))) ||
       null;
     let current = adm0;
-    if (location.adm2) {
+    if (location?.adm2) {
       current = adm2;
-    } else if (location.adm1) {
+    } else if (location?.adm1) {
       current = adm1;
     }
 
@@ -156,12 +158,12 @@ export const getAdminsSelected = createSelector(
 export const getShareData = createSelector(
   [getAdminsSelected, selectLocation],
   (adminsSelected, location) => ({
-    title: location.type === 'aoi' ? 'Share this area' : 'Share this Dashboard',
-    shareUrl: `${window.location.href}`,
+    title: location?.type === 'aoi' ? 'Share this area' : 'Share this Dashboard',
+    shareUrl: !isServer && `${window.location.href}`,
     socialText: `${(adminsSelected &&
       adminsSelected.adm0 &&
       `${adminsSelected.adm0.label}'s`) ||
-      upperFirst(location.type)} dashboard`
+      upperFirst(location?.type)} dashboard`
   })
 );
 

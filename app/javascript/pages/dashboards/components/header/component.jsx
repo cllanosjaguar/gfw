@@ -156,29 +156,36 @@ class Header extends PureComponent {
             <div className="select-container">
               {isAreaDashboard && (
                 <Link
-                  className="breadcrumb-link"
-                  to="/dashboards/global"
-                  onClick={() =>
-                    track('switchDashboardType', { label: 'changes to global' })
-                  }
+                  href="/dashboards/[...location]"
+                  as="/dashboards/global"
                 >
-                  <Icon icon={arrowIcon} className="breadcrumb-icon" />
-                  Go to Global dashboard
+                  <a className="breadcrumb-link">
+                    <button onClick={() =>
+                      track('switchDashboardType', { label: 'changes to global' })}
+                    >
+                      <Icon icon={arrowIcon} className="breadcrumb-icon" />
+                      Go to Global dashboard
+                    </button>
+                  </a>
                 </Link>
               )}
               {isCountryDashboard &&
                 !!firstArea && (
                 <Link
-                  className="breadcrumb-link"
-                  to={`/dashboards/aoi/${firstArea.id}`}
-                  onClick={() =>
-                    track('switchDashboardType', {
-                      label: 'changes to areas'
-                    })
-                  }
+                  href="/dashboards/[...location]"
+                  as={`/dashboards/aoi/${firstArea.id}`}
                 >
-                  <Icon icon={arrowIcon} className="breadcrumb-icon" />
-                    Go to Areas dashboard
+                  <a className="breadcrumb-link">
+                    <button
+                      onClick={() =>
+                        track('switchDashboardType', {
+                          label: 'changes to areas'
+                        })}
+                    >
+                      <Icon icon={arrowIcon} className="breadcrumb-icon" />
+                      Go to Areas dashboard
+                    </button>
+                  </a>
                 </Link>
               )}
               {title && (

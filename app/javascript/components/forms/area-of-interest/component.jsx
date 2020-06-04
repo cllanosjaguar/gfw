@@ -291,7 +291,7 @@ class AreaOfInterestForm extends PureComponent {
                           }}
                         >
                           <Icon icon={deleteIcon} className="delete-icon" />
-                            Delete Area
+                          Delete Area
                         </Button>
                       )}
                     </div>

@@ -46,7 +46,7 @@ class ModalMeta extends PureComponent {
     }
   }
 
-  getContent() {
+  getContent = () => {
     const { metaData, tableData, loading, error, locationName } = this.props;
     const {
       subtitle,
@@ -118,22 +118,25 @@ class ModalMeta extends PureComponent {
             {(learn_more || download_data || map_service || amazon_link) && (
               <div className="ext-actions">
                 {learn_more && (
-                  <Button theme="theme-button-medium" extLink={learn_more}>
+                  <a href={learn_more} target="_blank" rel="noopener noreferrer">
+                    <Button theme="theme-button-medium">
                       LEARN MORE
-                  </Button>
+                    </Button>
+                  </a>
                 )}
                 {download_data && (
-                  <Button theme="theme-button-medium" extLink={download_data}>
+                  <a href={download_data} target="_blank" rel="noopener noreferrer">
+                    <Button theme="theme-button-medium">
                       DOWNLOAD DATA
-                  </Button>
+                    </Button>
+                  </a>
                 )}
                 {(map_service || amazon_link) && (
-                  <Button
-                    theme="theme-button-medium"
-                    extLink={map_service || amazon_link}
-                  >
+                  <a href={map_service || amazon_link} target="_blank" rel="noopener noreferrer">
+                    <Button theme="theme-button-medium">
                       OPEN IN ARCGIS
-                  </Button>
+                    </Button>
+                  </a>
                 )}
               </div>
             )}
@@ -143,7 +146,7 @@ class ModalMeta extends PureComponent {
     );
   }
 
-  parseContent(html) {
+  parseContent = (html) => {
     return (
       <div>
         {ReactHtmlParser(html, {
@@ -153,7 +156,7 @@ class ModalMeta extends PureComponent {
                 key={node.attribs.href}
                 href={node.attribs.href}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 {node.children[0].data}
               </a>

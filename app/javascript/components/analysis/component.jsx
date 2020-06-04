@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { track } from 'app/analytics';
 
+import Link from 'next/link';
+
 import Button from 'components/ui/button';
 import Loader from 'components/ui/loader';
 import ChoseAnalysis from 'components/analysis/components/chose-analysis';
@@ -156,14 +158,15 @@ class AnalysisComponent extends PureComponent {
                 </Button>
             )}
             {activeArea && (
-              <Button
-                className="analysis-action-btn"
-                theme="theme-button-light"
-                link={activeArea && `/dashboards/aoi/${activeArea.id}`}
-                tooltip={{ text: 'Go to Areas of Interest dashboard' }}
-              >
-                DASHBOARD
-              </Button>
+              <Link href="/dashboards/[...location" as={activeArea && `/dashboards/aoi/${activeArea.id}`}>
+                <Button
+                  className="analysis-action-btn"
+                  theme="theme-button-light"
+                  tooltip={{ text: 'Go to Areas of Interest dashboard' }}
+                >
+                  DASHBOARD
+                </Button>
+              </Link>
             )}
             {(!activeArea || (activeArea && !activeArea.userArea)) && (
               <Button

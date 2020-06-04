@@ -144,8 +144,7 @@ class ShowAnalysis extends PureComponent {
                       embedUrl: window.location.href.includes('embed')
                         ? window.location.href
                         : window.location.href.replace('/map', '/embed/map')
-                    })
-                  }
+                    })}
                   tooltip={{ text: 'Share analysis' }}
                 >
                   <Icon icon={shareIcon} className="icon-share" />
@@ -190,18 +189,19 @@ class ShowAnalysis extends PureComponent {
               !hasWidgets &&
               !loading && (
               <NoContent>
-                  Select a{' '}
+                Select a
+                {' '}
                 <button
                   onClick={() =>
                     setMenuSettings({
                       menuSection: 'datasets',
                       datasetCategory: 'forestChange'
-                    })
-                  }
+                    })}
                 >
-                    forest change
-                </button>{' '}
-                  data layer to analyze.
+                  forest change
+                </button>
+                {' '}
+                data layer to analyze.
               </NoContent>
             )}
             {(hasLayers || hasWidgets) &&
@@ -215,15 +215,16 @@ class ShowAnalysis extends PureComponent {
                 <div className="disclaimers">
                   {zoomLevel < 11 && (
                     <p>
-                        This algorithm approximates the results by sampling the
-                        selected area. Results are more accurate at closer zoom
-                        levels.
+                      This algorithm approximates the results by sampling the
+                      selected area. Results are more accurate at closer zoom
+                      levels.
                     </p>
                   )}
                   {showAnalysisDisclaimer && (
                     <p>
-                      <b>NOTE:</b> tree cover loss and gain statistics cannot
-                        be compared against each other.{' '}
+                      <b>NOTE:</b>
+                      tree cover loss and gain statistics cannot be compared against each other.
+                      {' '}
                       <button
                         onClick={() =>
                           setModalSources({
@@ -232,7 +233,7 @@ class ShowAnalysis extends PureComponent {
                           })
                         }
                       >
-                          Learn more.
+                        Learn more.
                       </button>
                     </p>
                   )}
@@ -254,18 +255,22 @@ class ShowAnalysis extends PureComponent {
             {activeArea ? (
               <div className="content">
                 <p>
-                    To perform an in-depth analysis of this area please visit
-                    the{' '}
-                  <Link to={`/dashboards/aoi/${activeArea.id}`}>
+                  To perform an in-depth analysis of this area please visit
+                  the
+                  {' '}
+                  <Link href="/dashboards/[...location]" as={`/dashboards/aoi/${activeArea.id}`}>
+                    <a>
                       area dashboard
-                  </Link>.
+                    </a>
+                  </Link>
+                  .
                 </p>
               </div>
             ) : (
               <div className="content">
                 <h3>Interested in this particular area?</h3>
                 <p>
-                    Save this area to create a dashboard with a more in-depth analysis and receive email alerts about forest cover change.
+                  Save this area to create a dashboard with a more in-depth analysis and receive email alerts about forest cover change.
                 </p>
               </div>
             )}

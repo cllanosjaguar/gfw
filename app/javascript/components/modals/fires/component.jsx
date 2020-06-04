@@ -40,11 +40,17 @@ class ModalGFWFires extends PureComponent {
           <Link
             key="link"
             href="/dashboards/global?category=fires"
-            onClick={() => {
-              setModalGFWFiresOpen(false);
-            }}
+
           >
-            click here
+            <a>
+              <button
+                onClick={() => {
+                  setModalGFWFiresOpen(false);
+                }}
+              >
+                click here
+              </button>
+            </a>
           </Link>,
           '.'
         ];

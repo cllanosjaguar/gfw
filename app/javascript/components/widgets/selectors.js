@@ -45,13 +45,11 @@ const buildLocationDict = locations =>
   {};
 
 export const selectLocation = state => state.location;
-export const selectRouteType = state => state.location && state.location.type;
-export const selectLocationQuery = state =>
-  state.location && state.location.query;
-export const selectLocationSearch = state =>
-  state.location && state.location.search;
-export const selectWidgetsData = state => state.widgets && state.widgets.data;
-export const selectGeostore = state => state.geostore && state.geostore.data;
+export const selectRouteType = state => state.location?.type;
+export const selectLocationQuery = state => state.location?.query;
+export const selectLocationSearch = state => state.location?.search;
+export const selectWidgetsData = state => state.widgets?.data;
+export const selectGeostore = state => state.geostore?.data;
 export const selectLoadingFilterData = state =>
   state.countryData &&
   state.whitelists &&
@@ -160,7 +158,7 @@ export const getLocationData = createSelector(
       children = [];
     }
 
-    const locationData = allLocationData[adminLevel] || adm0Data;
+    const locationData = allLocationData && allLocationData[adminLevel] || adm0Data;
     const currentLocation =
       locationData &&
       locationData.find(
@@ -263,6 +261,7 @@ export const filterWidgetsByLocation = createSelector(
       const matchesAdminWhitelist =
         !adminWhitelist || adminWhitelist.includes(location.adm0);
       const polynameIntersection =
+        polynameWhitelist &&
         whitelists &&
         whitelists.indicators &&
         intersection(

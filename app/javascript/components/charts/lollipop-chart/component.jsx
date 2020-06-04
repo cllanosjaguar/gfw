@@ -217,11 +217,12 @@ class LollipopChart extends PureComponent {
                     )}
                     {item.path && !linksExt && (
                       <Link
-                        className={`${linksDisabled ? 'disabled' : ''}`}
                         as={item.path}
                         href={item.path}
                       >
-                        {linkContent}
+                        <a className={`${linksDisabled ? 'disabled' : ''}`}>
+                          {linkContent}
+                        </a>
                       </Link>
                     )}
                     {!item.path && (

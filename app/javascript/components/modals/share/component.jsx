@@ -94,32 +94,40 @@ class Share extends PureComponent {
           </div>
         </div>
         <div className="social-container">
-          <Button
-            extLink={`https://twitter.com/intent/tweet?text=${
+          <a
+            href={`https://twitter.com/intent/tweet?text=${
               title
             }&via=globalforests&url=${shareUrl}`}
-            className="social-button"
-            theme="theme-button-light theme-button-grey  square"
-            onClick={() =>
-              track('shareSocial', {
-                label: shareUrl
-              })
-            }
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Icon icon={twitterIcon} className="twitter-icon" />
-          </Button>
-          <Button
-            extLink={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
-            theme="theme-button-light theme-button-grey square"
-            className="social-button"
-            onClick={() =>
-              track('shareSocial', {
-                label: shareUrl
-              })
-            }
+            <Button
+              className="social-button"
+              theme="theme-button-light theme-button-grey  square"
+              onClick={() =>
+                track('shareSocial', {
+                  label: shareUrl
+                })}
+            >
+              <Icon icon={twitterIcon} className="twitter-icon" />
+            </Button>
+          </a>
+          <a
+            href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Icon icon={facebookIcon} className="facebook-icon" />
-          </Button>
+            <Button
+              theme="theme-button-light theme-button-grey square"
+              className="social-button"
+              onClick={() =>
+                track('shareSocial', {
+                  label: shareUrl
+                })}
+            >
+              <Icon icon={facebookIcon} className="facebook-icon" />
+            </Button>
+          </a>
         </div>
       </div>
     );

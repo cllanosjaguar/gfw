@@ -19,14 +19,12 @@ const selectShowMap = state =>
 const selectLocation = state => state.location;
 const selectAreaError = state => state.areas && state.areas.error;
 const selectLocationType = state => state.location?.type;
-const selectCategory = state =>
-  (state.location && state.location.query && state.location.query.category) ||
-  'summary';
-export const selectQuery = state => state.location && state.location.query;
+const selectCategory = state => state.location?.query?.category || 'summary';
+export const selectQuery = state => state.location?.query;
 
 export const getEmbed = createSelector(
   [selectLocation],
-  location => location && location.routesMap[location.type].embed
+  location => location.pathname?.includes('/embed')
 );
 
 export const getWidgetAnchor = createSelector(
