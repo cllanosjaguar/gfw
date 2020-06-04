@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 
 import Cover from 'components/cover';
 import SubnavMenu from 'components/subnav-menu';
@@ -17,7 +17,7 @@ import How from 'pages/about/section-how';
 import Contact from 'pages/about/section-contact';
 
 import mailIcon from 'assets/icons/mail.svg';
-import bgImage from './header-bg';
+import bgImage from './header-bg.jpg';
 import './styles.scss';
 
 const sectionComponents = {

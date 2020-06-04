@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import YouTube from 'react-youtube';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 import cx from 'classnames';
 
 import NewsProvider from 'providers/news-provider';
@@ -169,7 +169,7 @@ class HomePage extends PureComponent {
                         className="use-credit"
                         href={c.credit.extLink}
                         target="_blank"
-                        rel="noopener nofollower"
+                        rel="noopener noreferrer"
                       >
                         {c.credit.name}
                       </a>
@@ -195,7 +195,7 @@ class HomePage extends PureComponent {
                   key={app.title}
                   href={app.extLink}
                   target="_blank"
-                  rel="noopener nofollower"
+                  rel="noopener noreferrer"
                 >
                   <div
                     className="app-slide"
@@ -250,7 +250,7 @@ class HomePage extends PureComponent {
                         href={item.link}
                         target="_blank"
                         className="news-card"
-                        rel="noopener nofollower"
+                        rel="noopener noreferrer"
                       >
                         <Card
                           data={{

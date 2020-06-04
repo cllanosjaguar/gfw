@@ -1,15 +1,39 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
+
+import { setUserToken } from 'services/user';
 
 import * as actions from './actions';
 import reducers, { initialState } from './reducers';
-import { getMyGfwProps } from './selectors';
 
 class MyGFWProvider extends PureComponent {
+  static propTypes = {
+    getUserProfile: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired
+  };
+
+  selectLocalToken = () =>
+  typeof window !== 'undefined'
+    ? localStorage && localStorage.getItem('mygfw_token')
+    : '';
+
   componentDidMount() {
-    const { getUserProfile } = this.props;
-    getUserProfile();
+    const { getUserProfile, router } = this.props;
+    const { query, push, pathname } = router;
+    const urlToken = query?.token;
+
+    if (urlToken) {
+      setUserToken(urlToken);
+      delete query.token;
+      push({
+        pathname,
+        query
+      });
+    }
+
+    getUserProfile(query?.token);
   }
 
   render() {
@@ -17,14 +41,10 @@ class MyGFWProvider extends PureComponent {
   }
 }
 
-MyGFWProvider.propTypes = {
-  getUserProfile: PropTypes.func.isRequired
-};
-
 export const reduxModule = {
   actions,
   reducers,
-  initialState
+  initialState,
 };
 
-export default connect(getMyGfwProps, actions)(MyGFWProvider);
+export default withRouter(connect(null, actions)(MyGFWProvider));

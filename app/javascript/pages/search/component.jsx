@@ -64,7 +64,7 @@ class SearchPage extends PureComponent {
                         <a
                           href={item.link}
                           target="_blank"
-                          rel="noopener nofollower"
+                          rel="noopener noreferrer"
                           className="notranslate"
                         >
                           <h3>{item.title}</h3>

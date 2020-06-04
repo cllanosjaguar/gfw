@@ -1,12 +1,9 @@
-import Head from 'next/head';
+import Layout from 'app/layouts/root';
+// import Home from 'pages/home';
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-    </div>
-  )
-}
+export default (props) => (
+  <Layout {...props}>
+    hjkjkhjkhjk
+    {/* <Home /> */}
+  </Layout>
+);

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 
 import Modal from '../modal';
 

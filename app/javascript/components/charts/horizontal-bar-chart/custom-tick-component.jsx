@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'utils/format';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 
 const CustomTick = ({ x, y, index, yAxisDotFill, data, settings }) => {
   const { region, path, rank, total, extLink } = data[index];
@@ -21,7 +21,7 @@ const CustomTick = ({ x, y, index, yAxisDotFill, data, settings }) => {
       </text>
       <text x="8" y="-16" textAnchor="start" fontSize="12px" fill="#555555">
         {extLink ? (
-          <a href={path} target="_blank" rel="noopener nofollower">
+          <a href={path} target="_blank" rel="noopener noreferrer">
             {region} - {formatNumber({ num: total, unit: '%' })}
             {index === 0 ? ' are plantations' : ''}
           </a>

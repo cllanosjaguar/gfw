@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { NavLink } from 'redux-first-router-link';
+import { NavLink } from 'next/link';
 import treeImage from 'assets/icons/tree-success.png';
 
 import './styles.scss';

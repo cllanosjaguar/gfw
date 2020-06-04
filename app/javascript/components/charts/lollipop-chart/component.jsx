@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import MediaQuery from 'react-responsive';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -186,7 +186,7 @@ class LollipopChart extends PureComponent {
                               item.path
                             }`}
                             target="_blank"
-                            rel="noopener nofollower"
+                            rel="noopener noreferrer"
                           >
                             {linkContent}
                           </a>

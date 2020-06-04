@@ -10,7 +10,7 @@ class LayerMoreInfo extends PureComponent {
     return (
       <div className={`c-layer-more-info ${className || ''}`}>
         <p>{text}</p>
-        <a href={linkUrl} target="_blank" rel="noopener nofollower">
+        <a href={linkUrl} target="_blank" rel="noopener noreferrer">
           {linkText}
         </a>
       </div>

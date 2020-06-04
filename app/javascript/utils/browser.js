@@ -1,9 +1,11 @@
 import UAParser from 'ua-parser-js';
 
+const isServer = typeof window === 'undefined';
+
 const parser = new UAParser();
 let isValidBrowser = true;
 
-export const isTouch = () => 'ontouchstart' in window;
+export const isTouch = () => !isServer && 'ontouchstart' in window;
 
 const allowedBrowsers = {
   Chrome: 50,
@@ -14,7 +16,7 @@ const allowedBrowsers = {
   Edge: 15
 };
 
-export const checkBrowser = () => {
+export default () => {
   const userAgent = parser.getResult();
   const { browser: { name, major } } = userAgent;
 

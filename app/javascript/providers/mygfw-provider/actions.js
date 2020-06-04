@@ -2,13 +2,15 @@ import { createAction, createThunkAction } from 'utils/redux';
 
 import { checkLoggedIn, getProfile } from 'services/user';
 
+const isServer = typeof window === 'undefined';
+
 export const setMyGFWLoading = createAction('setMyGFWLoading');
 export const setMyGFW = createAction('setMyGFW');
 
 export const getUserProfile = createThunkAction(
   'getUserProfile',
-  () => dispatch => {
-    const token = localStorage.getItem('userToken');
+  urlToken => dispatch => {
+    const token = !isServer && (urlToken || localStorage.getItem('userToken'));
     if (token) {
       dispatch(setMyGFWLoading({ loading: true, error: false }));
       checkLoggedIn()

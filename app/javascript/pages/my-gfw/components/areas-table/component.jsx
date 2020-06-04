@@ -4,7 +4,7 @@ import intersection from 'lodash/intersection';
 import sortBy from 'lodash/sortBy';
 import slice from 'lodash/slice';
 import { deburrUpper } from 'utils/data';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 
 import Icon from 'components/ui/icon';
 import Button from 'components/ui/button';
@@ -32,9 +32,6 @@ class AreasTable extends PureComponent {
 
   state = {
     activeTags: [],
-    areas: [],
-    selectedTags: [],
-    unselectedTags: [],
     sortBy: '',
     search: '',
     alerts: {},

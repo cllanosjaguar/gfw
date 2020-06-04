@@ -208,7 +208,7 @@ class ChoseAnalysis extends PureComponent {
           </div>
           <p>
             By uploading data you agree to the{' '}
-            <a href="/terms" target="_blank" rel="noopenner nofollower">
+            <a href="/terms" target="_blank" rel="noopenner noreferrer">
               GFW Terms of Service
             </a>
           </p>

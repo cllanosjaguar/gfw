@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 import { isTouch } from 'utils/browser';
 import cx from 'classnames';
 

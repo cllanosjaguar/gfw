@@ -7,7 +7,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import SankeyChart from 'components/charts/sankey-chart';
 
-import './styles';
+import './styles.scss';
 
 class WidgetSankey extends PureComponent {
   static propTypes = {

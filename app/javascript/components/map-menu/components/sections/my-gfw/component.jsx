@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import intersection from 'lodash/intersection';
 import { logout } from 'services/user';
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 import slice from 'lodash/slice';
 
 import { track } from 'app/analytics';

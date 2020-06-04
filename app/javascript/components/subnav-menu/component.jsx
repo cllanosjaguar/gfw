@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link as AnchorLink } from 'react-scroll';
-import { NavLink } from 'redux-first-router-link';
+import { NavLink } from 'next/link';
 
 import Icon from 'components/ui/icon';
 

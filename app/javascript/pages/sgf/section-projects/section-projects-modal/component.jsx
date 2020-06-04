@@ -7,7 +7,7 @@ import Carousel from 'components/ui/carousel';
 import './styles.scss';
 
 class SectionProjectsModal extends PureComponent {
-  parseContent(html, className) {
+  parseContent = (html, className) => {
     return (
       <div className={className}>
         {ReactHtmlParser(html, {
@@ -17,7 +17,7 @@ class SectionProjectsModal extends PureComponent {
                 key={node.attribs.href}
                 href={node.attribs.href}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 {node.children[0].data}
               </a>
@@ -90,7 +90,7 @@ class SectionProjectsModal extends PureComponent {
                 className="links"
                 href={data.blogLink}
                 target="_blank"
-                rel="noopener nofollower"
+                rel="noopener noreferrer"
               >
                 {data.blogSentence}
               </a>

@@ -5,7 +5,7 @@ import { FORM_ERROR } from 'final-form';
 
 import { submitContactForm } from 'services/forms';
 
-import Link from 'redux-first-router-link';
+import Link from 'next/link';
 import Button from 'components/ui/button';
 
 import Error from 'components/forms/components/error';

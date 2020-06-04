@@ -8,7 +8,6 @@ import {
   POLITICAL_BOUNDARIES,
   RECENT_SATELLITE_IMAGERY
 } from 'data/layers';
-import { MAP, MAP_EMBED } from './router';
 
 const paramKeys = [
   'map',
@@ -143,7 +142,7 @@ export const getNewMapRedirect = ({ slugs, query }) => {
   ];
 
   return {
-    type: embed ? MAP_EMBED : MAP,
+    type: '',
     payload,
     query: {
       map: {
