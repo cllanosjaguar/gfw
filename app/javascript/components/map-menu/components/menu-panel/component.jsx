@@ -6,8 +6,8 @@ import startCase from 'lodash/startCase';
 import Loader from 'components/ui/loader';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
-import closeIcon from 'assets/icons/close.svg';
-import arrowIcon from 'assets/icons/arrow-down.svg';
+import closeIcon from 'assets/icons/close.svg?sprite';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
 import posed, { PoseGroup } from 'react-pose';
 
 import './styles.scss';

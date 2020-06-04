@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import settingsIcon from 'assets/icons/settings.svg';
+import settingsIcon from 'assets/icons/settings.svg?sprite';
 import WidgetSettings from '../widget-settings';
 
 import './styles.scss';

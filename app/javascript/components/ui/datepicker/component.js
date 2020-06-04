@@ -13,7 +13,7 @@ import Dropdown from 'components/ui/dropdown';
 import Input from 'components/ui/input';
 import Icon from 'components/ui/icon';
 import Button from 'components/ui/button';
-import arrowIcon from 'assets/icons/arrow-down.svg';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
 
 import es_MX from 'date-fns/locale/es';
 import fr from 'date-fns/locale/fr';
@@ -142,6 +142,7 @@ class Datepicker extends PureComponent {
                   }}
                   role="button"
                   tabIndex={-1}
+                  aria-label="button"
                 />
               )}
             </div>

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { track } from 'app/analytics';
 
-import twitterIcon from 'assets/icons/twitter.svg';
-import facebookIcon from 'assets/icons/facebook.svg';
+import twitterIcon from 'assets/icons/twitter.svg?sprite';
+import facebookIcon from 'assets/icons/facebook.svg?sprite';
 
 import Switch from 'components/ui/switch';
 import Button from 'components/ui/button';

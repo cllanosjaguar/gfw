@@ -12,7 +12,7 @@ import { track } from 'app/analytics';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import downloadIcon from 'assets/icons/download.svg';
+import downloadIcon from 'assets/icons/download.svg?sprite';
 
 import './styles.scss';
 

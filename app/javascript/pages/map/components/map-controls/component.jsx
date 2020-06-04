@@ -7,14 +7,14 @@ import cx from 'classnames';
 import { isParent } from 'utils/dom';
 import { track } from 'app/analytics';
 
-import plusIcon from 'assets/icons/plus.svg';
-import minusIcon from 'assets/icons/minus.svg';
-import shareIcon from 'assets/icons/share.svg';
-import fullscreenIcon from 'assets/icons/fit-zoom.svg';
-import printIcon from 'assets/icons/print.svg';
-import helpIocn from 'assets/icons/help.svg';
-import globeIcon from 'assets/icons/globe.svg';
-import satelliteIcon from 'assets/icons/satellite.svg';
+import plusIcon from 'assets/icons/plus.svg?sprite';
+import minusIcon from 'assets/icons/minus.svg?sprite';
+import shareIcon from 'assets/icons/share.svg?sprite';
+import fullscreenIcon from 'assets/icons/fit-zoom.svg?sprite';
+import printIcon from 'assets/icons/print.svg?sprite';
+import helpIocn from 'assets/icons/help.svg?sprite';
+import globeIcon from 'assets/icons/globe.svg?sprite';
+import satelliteIcon from 'assets/icons/satellite.svg?sprite';
 
 import Basemaps from 'components/basemaps';
 import RecentImagerySettings from 'components/recent-imagery/components/recent-imagery-settings';
@@ -49,7 +49,6 @@ class MapControlsButtons extends PureComponent {
     const { setMainMapSettings, setMenuSettings, hidePanels } = this.props;
     setMainMapSettings({ hidePanels: !hidePanels });
     setMenuSettings({ menuSection: '' });
-    this.setState({ showBasemaps: false });
     if (!hidePanels) {
       track('hidePanels');
     }
@@ -197,13 +196,12 @@ class MapControlsButtons extends PureComponent {
         animateFill={false}
         arrow
         open={showRecentImagery}
-        html={
+        html={(
           <RecentImagerySettings
             onClickClose={() =>
-              setMainMapSettings({ showRecentImagery: false })
-            }
+              setMainMapSettings({ showRecentImagery: false })}
           />
-        }
+        )}
         offset={120}
       >
         {this.renderRecentImageryBtn()}

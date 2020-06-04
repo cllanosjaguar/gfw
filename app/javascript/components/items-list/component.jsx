@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from 'components/ui/icon';
-import arrowIcon from 'assets/icons/flechita.svg';
+import arrowIcon from 'assets/icons/flechita.svg?sprite';
 import './styles.scss';
 
 class ItemsList extends PureComponent {

@@ -8,7 +8,7 @@ import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 import Tip from 'components/ui/tip';
 
-import linkIcon from 'assets/icons/link.svg';
+import linkIcon from 'assets/icons/link.svg?sprite';
 import './styles.scss';
 
 class MiniLegend extends PureComponent {

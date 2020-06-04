@@ -1,8 +1,8 @@
 import { createElement } from 'react';
 
-import Earth from './img/earth.svg';
-import Map from './img/map.svg';
-import People from './img/people.svg';
+import Earth from './img/earth.svg?sprite';
+import Map from './img/map.svg?sprite';
+import People from './img/people.svg?sprite';
 
 import Component from './component';
 

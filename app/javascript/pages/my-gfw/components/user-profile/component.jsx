@@ -6,8 +6,8 @@ import { logout } from 'services/user';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import pencilIcon from 'assets/icons/pencil.svg';
-import logoutIcon from 'assets/icons/logout.svg';
+import pencilIcon from 'assets/icons/pencil.svg?sprite';
+import logoutIcon from 'assets/icons/logout.svg?sprite';
 
 import './styles.scss';
 

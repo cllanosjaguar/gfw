@@ -18,8 +18,8 @@ import { formatNumber } from 'utils/format';
 import Icon from 'components/ui/icon';
 import MapGeostore from 'components/map-geostore';
 
-import tagIcon from 'assets/icons/tag.svg';
-import subscribedIcon from 'assets/icons/subscribed.svg';
+import tagIcon from 'assets/icons/tag.svg?sprite';
+import subscribedIcon from 'assets/icons/subscribed.svg?sprite';
 
 import './styles.scss';
 
@@ -59,7 +59,7 @@ const getLatestAlerts = ({ location, params }) =>
         };
       })
     )
-    .catch(error => console.error(error));
+    .catch(() => null);
 
 
 class AoICard extends PureComponent {
@@ -79,8 +79,7 @@ class AoICard extends PureComponent {
 
   state = {
     alerts: {},
-    loading: false,
-    error: false
+    loading: false
   };
 
   mounted = false;
@@ -229,13 +228,13 @@ class AoICard extends PureComponent {
             !isPending && (
             <div className="activity">
               <span className="activity-intro">
-                {"Latest week's alerts:"}
+                Latest week&apos;s alerts:
               </span>
               {!loading &&
                   dataError && (
-                <span className="data-error-msg">
-                      Sorry, we had trouble finding your alerts!
-                </span>
+                  <span className="data-error-msg">
+                    Sorry, we had trouble finding your alerts!
+                  </span>
               )}
               {!dataError && (
                 <Fragment>
@@ -247,7 +246,8 @@ class AoICard extends PureComponent {
                             num: glads || 0,
                             unit: 'counts'
                           })}
-                        </span>{' '}
+                        </span>
+                        {' '}
                         <p>GLAD alerts</p>
                       </div>
                     ) : (
@@ -271,7 +271,8 @@ class AoICard extends PureComponent {
                             num: fires || 0,
                             unit: 'counts'
                           })}
-                        </span>{' '}
+                        </span>
+                        {' '}
                         <p>VIIRS alerts</p>
                       </Fragment>
                     ) : (

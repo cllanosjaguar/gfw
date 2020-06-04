@@ -9,13 +9,13 @@ import Icon from 'components/ui/icon';
 import Button from 'components/ui/button';
 import Switch from 'components/ui/switch';
 
-import infoIcon from 'assets/icons/info.svg';
-import closeIcon from 'assets/icons/close.svg';
-import arrowIcon from 'assets/icons/arrow-down.svg';
+import infoIcon from 'assets/icons/info.svg?sprite';
+import closeIcon from 'assets/icons/close.svg?sprite';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
 
-import boundariesIcon from 'assets/icons/boundaries.svg';
-import labelsIcon from 'assets/icons/labels.svg';
-import roadsIcon from 'assets/icons/roads.svg';
+import boundariesIcon from 'assets/icons/boundaries.svg?sprite';
+import labelsIcon from 'assets/icons/labels.svg?sprite';
+import roadsIcon from 'assets/icons/roads.svg?sprite';
 
 import './styles.scss';
 

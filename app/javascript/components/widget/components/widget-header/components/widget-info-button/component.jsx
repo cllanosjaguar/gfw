@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import infoIcon from 'assets/icons/info.svg';
+import infoIcon from 'assets/icons/info.svg?sprite';
 
 class WidgetInfoButton extends PureComponent {
   static propTypes = {

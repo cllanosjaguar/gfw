@@ -8,8 +8,8 @@ import Icon from 'components/ui/icon';
 import { Tooltip } from 'react-tippy';
 import Tip from 'components/ui/tip';
 
-import infoIcon from 'assets/icons/info.svg';
-import helpIcon from 'assets/icons/help.svg';
+import infoIcon from 'assets/icons/info.svg?sprite';
+import helpIcon from 'assets/icons/help.svg?sprite';
 
 import './styles.scss';
 

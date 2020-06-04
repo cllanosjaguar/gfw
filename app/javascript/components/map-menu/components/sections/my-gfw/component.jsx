@@ -17,8 +17,8 @@ import Pill from 'components/ui/pill';
 import Loader from 'components/ui/loader';
 import Paginate from 'components/paginate';
 
-import editIcon from 'assets/icons/edit.svg';
-import logoutIcon from 'assets/icons/logout.svg';
+import editIcon from 'assets/icons/edit.svg?sprite';
+import logoutIcon from 'assets/icons/logout.svg?sprite';
 import screenImg1x from 'assets/images/aois/aoi-dashboard.png';
 import screenImg2x from 'assets/images/aois/aoi-dashboard@2x.png';
 

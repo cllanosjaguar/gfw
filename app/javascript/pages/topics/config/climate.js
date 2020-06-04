@@ -29,9 +29,9 @@ import birds1 from 'pages/topics/assets/climate/animations/birds1.json';
 import birds2 from 'pages/topics/assets/climate/animations/birds2.json';
 import scene2 from 'pages/topics/assets/climate/animations/scene2.json';
 import birds4 from 'pages/topics/assets/climate/animations/birds4.json';
-import arrowsSmall from 'pages/topics/assets/climate/animations/arrow-small.svg';
-import arrowsMedium from 'pages/topics/assets/climate/animations/arrow-medium.svg';
-import arrowsLarge from 'pages/topics/assets/climate/animations/arrow-large.svg';
+import arrowsSmall from 'pages/topics/assets/climate/animations/arrow-small.svg?sprite';
+import arrowsMedium from 'pages/topics/assets/climate/animations/arrow-medium.svg?sprite';
+import arrowsLarge from 'pages/topics/assets/climate/animations/arrow-large.svg?sprite';
 
 // NYC tracker widget config
 import nycWidgetConfig from 'components/widgets/climate/cumulative-emissions';

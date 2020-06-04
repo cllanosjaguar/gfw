@@ -18,8 +18,8 @@ import RefreshButton from 'components/ui/refresh-button';
 
 import WEEKS from 'data/weeks.json';
 import BANDS from 'data/bands.json';
-import closeIcon from 'assets/icons/close.svg';
-import infoIcon from 'assets/icons/info.svg';
+import closeIcon from 'assets/icons/close.svg?sprite';
+import infoIcon from 'assets/icons/info.svg?sprite';
 
 import RecentImageryThumbnail from '../recent-imagery-thumbnail';
 

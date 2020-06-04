@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { handlePageTrack } from 'app/analytics';
 
-import treeImage from 'assets/icons/error.svg';
+import treeImage from 'assets/icons/error.svg?sprite';
 import Search from 'components/ui/search';
 import Button from 'components/ui/button';
 import Loader from 'components/ui/loader';

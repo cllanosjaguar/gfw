@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import Icon from 'components/ui/icon';
 
-import arrowDownIcon from 'assets/icons/arrow-down.svg';
-import closeIcon from 'assets/icons/close.svg';
+import arrowDownIcon from 'assets/icons/arrow-down.svg?sprite';
+import closeIcon from 'assets/icons/close.svg?sprite';
 
 import './styles.scss';
 

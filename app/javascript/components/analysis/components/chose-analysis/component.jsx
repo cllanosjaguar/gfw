@@ -11,10 +11,10 @@ import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 import Dropdown from 'components/ui/dropdown';
 
-import infoIcon from 'assets/icons/info.svg';
-import closeIcon from 'assets/icons/close.svg';
-import squarePointIcon from 'assets/icons/square-point.svg';
-import polygonIcon from 'assets/icons/polygon.svg';
+import infoIcon from 'assets/icons/info.svg?sprite';
+import closeIcon from 'assets/icons/close.svg?sprite';
+import squarePointIcon from 'assets/icons/square-point.svg?sprite';
+import polygonIcon from 'assets/icons/polygon.svg?sprite';
 
 import './styles.scss';
 

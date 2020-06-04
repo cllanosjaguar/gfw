@@ -4,7 +4,7 @@ import Modal from 'components/modals/modal';
 import Button from 'components/ui/button';
 import Tip from 'components/ui/tip';
 
-// import dollarIcon from 'assets/icons/info.svg';
+// import dollarIcon from 'assets/icons/info.svg?sprite';
 import './styles.scss';
 
 class SectionProjectsModal extends PureComponent {

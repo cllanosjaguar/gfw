@@ -6,7 +6,7 @@ import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 import Checkbox from 'components/ui/checkbox';
 
-import closeIcon from 'assets/icons/close.svg';
+import closeIcon from 'assets/icons/close.svg?sprite';
 
 import './styles.scss';
 

@@ -19,7 +19,7 @@ import Icon from 'components/ui/icon';
 
 import screenImg1x from 'assets/images/aois/alert-email.png';
 import screenImg2x from 'assets/images/aois/alert-email@2x.png';
-import deleteIcon from 'assets/icons/delete.svg';
+import deleteIcon from 'assets/icons/delete.svg?sprite';
 
 import {
   email as validateEmail,

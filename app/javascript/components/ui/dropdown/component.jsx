@@ -9,8 +9,8 @@ import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 import Tip from 'components/ui/tip';
 
-import infoIcon from 'assets/icons/info.svg';
-import arrowIcon from 'assets/icons/arrow-down.svg';
+import infoIcon from 'assets/icons/info.svg?sprite';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
 
 import Selector from './components/selector';
 import Menu from './components/menu';

@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import satelliteDetailed from 'assets/icons/satellite-detailed.svg';
+import satelliteDetailed from 'assets/icons/satellite-detailed.svg?sprite';
 
 import './styles.scss';
 

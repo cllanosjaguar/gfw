@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import mapIcon from 'assets/icons/map-button.svg';
+import mapIcon from 'assets/icons/map-button.svg?sprite';
 
 import './styles.scss';
 

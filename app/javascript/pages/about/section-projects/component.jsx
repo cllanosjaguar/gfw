@@ -8,7 +8,7 @@ import Icon from 'components/ui/icon';
 import { SCREEN_L } from 'utils/constants';
 import MediaQuery from 'react-responsive';
 
-import playIcon from 'assets/icons/play.svg';
+import playIcon from 'assets/icons/play.svg?sprite';
 import growth from 'pages/about/section-projects/images/growth.png';
 import './styles.scss';
 

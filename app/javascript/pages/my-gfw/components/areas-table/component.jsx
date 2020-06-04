@@ -15,9 +15,9 @@ import Dropdown from 'components/ui/dropdown';
 import Search from 'components/ui/search';
 import Paginate from 'components/paginate';
 
-import mapIcon from 'assets/icons/view-map.svg';
-import editIcon from 'assets/icons/edit.svg';
-import shareIcon from 'assets/icons/share.svg';
+import mapIcon from 'assets/icons/view-map.svg?sprite';
+import editIcon from 'assets/icons/edit.svg?sprite';
+import shareIcon from 'assets/icons/share.svg?sprite';
 
 import './styles.scss';
 

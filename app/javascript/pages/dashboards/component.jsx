@@ -25,7 +25,7 @@ import ModalMeta from 'components/modals/meta';
 import ScrollTo from 'components/scroll-to';
 import DashboardPrompts from 'components/prompts/dashboard-prompts';
 
-import closeIcon from 'assets/icons/close.svg';
+import closeIcon from 'assets/icons/close.svg?sprite';
 
 import Map from './components/map';
 import Header from './components/header';

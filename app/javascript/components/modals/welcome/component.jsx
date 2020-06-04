@@ -6,8 +6,8 @@ import Icon from 'components/ui/icon';
 import Button from 'components/ui/button';
 import Checkbox from 'components/ui/checkbox';
 
-import arrowIcon from 'assets/icons/arrow-down.svg';
-import helpGreenIcon from 'assets/icons/help-green.svg';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
+import helpGreenIcon from 'assets/icons/help-green.svg?sprite';
 
 import Modal from '../modal';
 

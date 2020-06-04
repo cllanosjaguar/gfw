@@ -12,7 +12,7 @@ import Loader from 'components/ui/loader';
 import Icon from 'components/ui/icon';
 import Map from 'components/ui/map';
 
-import iconCrosshair from 'assets/icons/crosshair.svg';
+import iconCrosshair from 'assets/icons/crosshair.svg?sprite';
 
 import Scale from './components/scale';
 import Popup from './components/popup';
@@ -29,7 +29,6 @@ class MapComponent extends Component {
   static propTypes = {
     className: PropTypes.string,
     viewport: PropTypes.shape().isRequired,
-    bounds: PropTypes.shape(),
     mapStyle: PropTypes.string.isRequired,
     setMapSettings: PropTypes.func.isRequired,
     setMapInteractions: PropTypes.func.isRequired,
@@ -52,10 +51,6 @@ class MapComponent extends Component {
     onSelectBoundary: PropTypes.func,
     onDrawComplete: PropTypes.func,
     lang: PropTypes.string
-  };
-
-  static defaultProps = {
-    bounds: {}
   };
 
   state = {

@@ -4,7 +4,7 @@ import SlickSlider from 'react-slick';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
 
-import arrowIcon from 'assets/icons/arrow-down.svg';
+import arrowIcon from 'assets/icons/arrow-down.svg?sprite';
 import { SCREEN_M } from 'utils/constants';
 
 import './styles.scss';
@@ -15,7 +15,7 @@ const defaultSettings = {
   infinite: false,
   slidesToShow: 2,
   slidesToScroll: 1,
-  customPaging: () => <button />,
+  customPaging: () => {},
   nextArrow: (
     <Button theme="square">
       <Icon icon={arrowIcon} />
