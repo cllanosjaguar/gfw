@@ -9,6 +9,7 @@
 
     @media screen and (min-width: $screen-m) {
       width: calc(100% - 76px);
+      margin-left: 76px;
     }
 
     .main-map {
