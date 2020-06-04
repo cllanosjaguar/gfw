@@ -2,20 +2,22 @@ import queryString from 'query-string';
 import omit from 'lodash/omit';
 import oldLayers from 'data/v2-v3-datasets-layers.json';
 
-const oldLayersAndDatasets = oldLayers.reduce((obj, item) => ({
-  ...obj,
-  ...item.v2_dataset_id && {
-    [item.v2_dataset_id]: item.v3_dataset_id
-  },
-  ...item.v2_layer_id && {
-    [item.v2_layer_id]: item.v3_layer_id
-  }
-}), {});
+const oldLayersAndDatasets = oldLayers.reduce(
+  (obj, item) => ({
+    ...obj,
+    ...(item.v2_dataset_id && {
+      [item.v2_dataset_id]: item.v3_dataset_id,
+    }),
+    ...(item.v2_layer_id && {
+      [item.v2_layer_id]: item.v3_layer_id,
+    }),
+  }),
+  {}
+);
 
-export const decodeUrlForState = url => {
+export const decodeParamsForState = (params) => {
   const paramsParsed = {};
-  const params = queryString.parse(url);
-  Object.keys(params).forEach(key => {
+  Object.keys(params).forEach((key) => {
     try {
       paramsParsed[key] = JSON.parse(atob(params[key]));
     } catch (err) {
@@ -26,22 +28,79 @@ export const decodeUrlForState = url => {
   if (paramsParsed.map) {
     paramsParsed.map = {
       ...paramsParsed.map,
-      ...paramsParsed.map.datasets && {
-        datasets: paramsParsed.map && paramsParsed.map.datasets.reduce((arr, dataset) => [...arr, {
-          ...dataset,
-          dataset: oldLayersAndDatasets[dataset.dataset] || dataset.dataset,
-          layers: dataset.layers.reduce((lArr, layerId) => [...lArr, oldLayersAndDatasets[layerId] || layerId], [])
-        }], [])
-      }
+      ...(paramsParsed.map.datasets && {
+        datasets:
+          paramsParsed.map &&
+          paramsParsed.map.datasets.reduce(
+            (arr, dataset) => [
+              ...arr,
+              {
+                ...dataset,
+                dataset:
+                  oldLayersAndDatasets[dataset.dataset] || dataset.dataset,
+                layers: dataset.layers.reduce(
+                  (lArr, layerId) => [
+                    ...lArr,
+                    oldLayersAndDatasets[layerId] || layerId,
+                  ],
+                  []
+                ),
+              },
+            ],
+            []
+          ),
+      }),
     };
   }
 
   return paramsParsed;
 };
 
-export const encodeStateForUrl = params => {
+export const decodeUrlForState = (url) => {
   const paramsParsed = {};
-  Object.keys(params).forEach(key => {
+  const params = queryString.parse(url);
+  Object.keys(params).forEach((key) => {
+    try {
+      paramsParsed[key] = JSON.parse(atob(params[key]));
+    } catch (err) {
+      paramsParsed[key] = params[key];
+    }
+  });
+
+  if (paramsParsed.map) {
+    paramsParsed.map = {
+      ...paramsParsed.map,
+      ...(paramsParsed.map.datasets && {
+        datasets:
+          paramsParsed.map &&
+          paramsParsed.map.datasets.reduce(
+            (arr, dataset) => [
+              ...arr,
+              {
+                ...dataset,
+                dataset:
+                  oldLayersAndDatasets[dataset.dataset] || dataset.dataset,
+                layers: dataset.layers.reduce(
+                  (lArr, layerId) => [
+                    ...lArr,
+                    oldLayersAndDatasets[layerId] || layerId,
+                  ],
+                  []
+                ),
+              },
+            ],
+            []
+          ),
+      }),
+    };
+  }
+
+  return paramsParsed;
+};
+
+export const encodeStateForUrl = (params) => {
+  const paramsParsed = {};
+  Object.keys(params).forEach((key) => {
     if (typeof params[key] === 'object') {
       paramsParsed[key] = btoa(JSON.stringify(params[key]));
     } else {
@@ -52,12 +111,14 @@ export const encodeStateForUrl = params => {
 };
 
 export const setComponentStateToUrl = ({ key, subKey, change, state }) => {
-  const { location: { query, payload, type } } = state();
+  const {
+    location: { query, payload, type },
+  } = state();
   let params = change;
   if (query && query[subKey || key] && !!change && typeof change === 'object') {
     params = {
       ...query[subKey || key],
-      ...change
+      ...change,
     };
   }
 
@@ -72,8 +133,8 @@ export const setComponentStateToUrl = ({ key, subKey, change, state }) => {
     query: {
       ...cleanLocationQuery,
       ...(params && {
-        [subKey || key]: params
-      })
-    }
+        [subKey || key]: params,
+      }),
+    },
   };
 };
