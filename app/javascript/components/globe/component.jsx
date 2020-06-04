@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
 import orbitControl from 'three-orbit-controls';
 import markerFellow from 'assets/icons/markers/marker_fellow.png';
 import markerGrantee from 'assets/icons/markers/marker_grantee.png';
 import earthImage from './img/earth-image.jpg';
+
+const isServer = typeof window === 'undefined';
 
 function latLongToVector3(lat, lon, radius, height) {
   const phi = lat * (Math.PI / 180);
@@ -19,14 +21,8 @@ function latLongToVector3(lat, lon, radius, height) {
 
 const Control = orbitControl(THREE);
 
-class GlobeComponent extends React.Component {
-  constructor() {
-    super();
-    this.markers = [];
-    this.state = {
-      globeSize: 0
-    };
-  }
+class GlobeComponent extends PureComponent {
+  markers = [];
 
   componentDidMount() {
     this.buildGlobe();
@@ -58,9 +54,9 @@ class GlobeComponent extends React.Component {
 
     this.camera.position.z = far / (2 * 0.9);
     this.renderer.setSize(width, height);
-    this.renderer.setPixelRatio(
-      window.devicePixelRatio ? window.devicePixelRatio : 1
-    );
+    if (!isServer) {
+      this.renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
+    }
 
     this.el.appendChild(this.renderer.domElement);
 
@@ -153,7 +149,7 @@ class GlobeComponent extends React.Component {
     this.props.onClick(data);
   }
 
-  getUserIcon(isFellow) {
+  getUserIcon = (isFellow) => {
     const texture = new THREE.TextureLoader().load(
       isFellow ? markerFellow : markerGrantee
     );
@@ -165,7 +161,7 @@ class GlobeComponent extends React.Component {
     });
   }
 
-  getTextLabel(text) {
+  getTextLabel = (text) => {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     const centerX = canvas.width / 2;
@@ -281,7 +277,7 @@ class GlobeComponent extends React.Component {
 }
 
 GlobeComponent.defaultProps = {
-  width: window.innerWidth,
+  width: !isServer && window.innerWidth,
   height: 500,
   radius: 205,
   autorotate: true,

@@ -20,6 +20,7 @@ class SectionPartners extends PureComponent {
                 className="columns small-6 medium-4 large-3"
                 href={l.link}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <img alt={l.title} src={l.img} />
               </a>
@@ -37,6 +38,7 @@ class SectionPartners extends PureComponent {
                 className="columns small-6 medium-4 large-3"
                 href={l.link}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <img alt={l.title} src={l.img} />
               </a>
@@ -54,6 +56,7 @@ class SectionPartners extends PureComponent {
                 className="columns small-6 medium-4 large-3"
                 href={l.link}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <img alt={l.title} src={l.img} />
               </a>

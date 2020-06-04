@@ -5,8 +5,7 @@ import ProjectsModal from 'pages/about/section-projects/section-projects-modal';
 import ItemsList from 'components/items-list';
 import Button from 'components/ui/button';
 import Icon from 'components/ui/icon';
-import { SCREEN_L } from 'utils/constants';
-import MediaQuery from 'react-responsive';
+import { Media } from 'utils/responsive';
 
 import playIcon from 'assets/icons/play.svg?sprite';
 import growth from 'pages/about/section-projects/images/growth.png';
@@ -27,20 +26,16 @@ class SectionProjects extends PureComponent {
     return (
       <div className="l-section-projects">
         <div className="row">
-          <MediaQuery minWidth={SCREEN_L}>
-            {isDesktop =>
-              isDesktop && (
-                <div className="column small-12 large-6 project-globe">
-                  <Globe
-                    autorotate={false}
-                    data={projects}
-                    onClick={handleGlobeClick}
-                  />
-                  <ProjectsModal />
-                </div>
-              )
-            }
-          </MediaQuery>
+          <Media greaterThanOrEqual="md">
+            <div className="column small-12 large-6 project-globe">
+              <Globe
+                autorotate={false}
+                data={projects}
+                onClick={handleGlobeClick}
+              />
+              <ProjectsModal />
+            </div>
+          </Media>
           <div className="column small-12 large-6 project-side">
             <h3>WHAT IS GLOBAL FOREST WATCH?</h3>
             <div
@@ -52,8 +47,7 @@ class SectionProjects extends PureComponent {
                     src:
                       '//www.youtube.com/embed/lTG-0brb98I?rel=0&autoplay=1&showinfo=0&controls=0&modestbranding=1'
                   }
-                })
-              }
+                })}
               role="button"
               tabIndex={0}
             >
@@ -78,12 +72,13 @@ class SectionProjects extends PureComponent {
                 onClick={setCategorySelected}
               />
             )}
-            <Button
-              className="how-to-btn"
-              extLink="https://www.globalforestwatch.org/howto/"
-            >
-              LEARN HOW TO USE GFW
-            </Button>
+            <a href="https://www.globalforestwatch.org/howto/" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="how-to-btn"
+              >
+                LEARN HOW TO USE GFW
+              </Button>
+            </a>
           </div>
         </div>
         <div className="visitors" style={{ backgroundImage: `url(${growth})` }}>

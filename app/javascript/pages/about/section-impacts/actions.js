@@ -27,8 +27,7 @@ export const fetchImpactProjects = createThunkAction(
           }));
           dispatch(setImpactsProjectsData(dataParsed));
         })
-        .catch(error => {
-          console.error(error);
+        .catch(() => {
           dispatch(setImpactsProjectsLoading({ loading: false, error: true }));
         });
     }
