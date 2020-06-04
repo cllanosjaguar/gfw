@@ -23,6 +23,7 @@ import MapPrompts from 'components/prompts/map-prompts';
 import ModalWelcome from 'components/modals/welcome';
 import RecentImagery from 'components/recent-imagery';
 
+import MapMenu from 'components/map-menu';
 import DataAnalysisMenu from './components/data-analysis-menu';
 import MapControlButtons from './components/map-controls';
 
@@ -31,8 +32,8 @@ import './styles.scss';
 class MainMapComponent extends PureComponent {
   static propTypes = {
     handleShowTooltip: PropTypes.func,
-    onDrawComplete: PropTypes.func,
-    handleClickAnalysis: PropTypes.func,
+    // onDrawComplete: PropTypes.func,
+    // handleClickAnalysis: PropTypes.func,
     handleClickMap: PropTypes.func,
     oneClickAnalysis: PropTypes.bool,
     hidePanels: PropTypes.bool,
@@ -40,7 +41,7 @@ class MainMapComponent extends PureComponent {
     recentActive: PropTypes.bool,
     tooltipData: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     showTooltip: PropTypes.bool,
-    setMainMapAnalysisView: PropTypes.func,
+    // setMainMapAnalysisView: PropTypes.func,
   };
 
   renderInfoTooltip = (string) => (
@@ -66,6 +67,12 @@ class MainMapComponent extends PureComponent {
 
     return (
       <div className={cx('c-map-main', { embed })}>
+        <Media greaterThanOrEqual="md">
+          <MapMenu className="map-menu" embed={embed} isDesktop />
+        </Media>
+        <Media lessThan="md">
+          <MapMenu className="map-menu" embed={embed} />
+        </Media>
         <div
           className="main-map-container"
           role="button"
