@@ -13,14 +13,12 @@ import { initialState } from './reducers';
 import basemaps from './basemaps';
 
 // map state
-const selectMapUrlState = state =>
-  state.location && state.location.query && state.location.query.map;
+const selectMapUrlState = state => state?.location?.query?.map;
 const selectMapLoading = state => state.map && state.map.loading;
 const selectGeostoreLoading = state => state.geostore && state.geostore.loading;
 const selectLatestLoading = state => state.latest && state.latest.loading;
 const selectDatasetsLoading = state => state.datasets && state.datasets.loading;
-const selectRecentImageryLoading = state =>
-  state.recentImagery && state.recentImagery.loading;
+const selectRecentImageryLoading = state => state.recentImagery?.loading;
 const selectMapData = state => state.map && state.map.data;
 const selectDatasets = state => state.datasets && state.datasets.data;
 const selectLatest = state => state.latest && state.latest.data;

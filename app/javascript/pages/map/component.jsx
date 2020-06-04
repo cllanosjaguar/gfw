@@ -13,7 +13,7 @@ import LatestProvider from 'providers/latest-provider';
 import AreasProvider from 'providers/areas-provider';
 import PlanetBasemapsProvider from 'providers/planet-provider';
 
-// import Map from 'components/map';
+import Map from 'components/map';
 import ModalMeta from 'components/modals/meta';
 import ModalSource from 'components/modals/sources';
 import Share from 'components/modals/share';
@@ -32,8 +32,8 @@ import './styles.scss';
 class MainMapComponent extends PureComponent {
   static propTypes = {
     handleShowTooltip: PropTypes.func,
-    // onDrawComplete: PropTypes.func,
-    // handleClickAnalysis: PropTypes.func,
+    onDrawComplete: PropTypes.func,
+    handleClickAnalysis: PropTypes.func,
     handleClickMap: PropTypes.func,
     oneClickAnalysis: PropTypes.bool,
     hidePanels: PropTypes.bool,
@@ -41,7 +41,7 @@ class MainMapComponent extends PureComponent {
     recentActive: PropTypes.bool,
     tooltipData: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     showTooltip: PropTypes.bool,
-    // setMainMapAnalysisView: PropTypes.func,
+    setMainMapAnalysisView: PropTypes.func,
   };
 
   renderInfoTooltip = (string) => (
@@ -60,9 +60,9 @@ class MainMapComponent extends PureComponent {
       handleClickMap,
       handleShowTooltip,
       recentActive,
-      // handleClickAnalysis,
-      // setMainMapAnalysisView,
-      // onDrawComplete,
+      handleClickAnalysis,
+      setMainMapAnalysisView,
+      onDrawComplete,
     } = this.props;
 
     return (
@@ -102,7 +102,7 @@ class MainMapComponent extends PureComponent {
             animateFill={false}
             open={showTooltip}
           >
-            {/* <Map
+            <Map
               className="main-map"
               onSelectBoundary={setMainMapAnalysisView}
               onDrawComplete={onDrawComplete}
@@ -112,7 +112,7 @@ class MainMapComponent extends PureComponent {
                   action: handleClickAnalysis,
                 },
               ]}
-            /> */}
+            />
           </Tooltip>
         </div>
         {!hidePanels && (

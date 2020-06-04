@@ -16,7 +16,7 @@ import iconCrosshair from 'assets/icons/crosshair.svg?sprite';
 
 import Scale from './components/scale';
 import Popup from './components/popup';
-import Draw from './components/draw';
+// import Draw from './components/draw';
 import Attributions from './components/attributions';
 
 // Components
@@ -337,11 +337,11 @@ class MapComponent extends Component {
                 {/* LAYER MANAGER */}
                 <LayerManagerWrapper map={map} />
                 {/* DRAWING */}
-                <Draw
+                {/* <Draw
                   map={map}
                   drawing={drawing}
                   onDrawComplete={onDrawComplete}
-                />
+                /> */}
                 {/* SCALE */}
                 <Scale className="map-scale" map={map} viewport={viewport} />
                 {/* ATTRIBUTIONS */}
