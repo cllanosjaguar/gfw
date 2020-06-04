@@ -8,7 +8,7 @@ import * as actions from './actions';
 import reducers, { initialState } from './reducers';
 
 const mapStateToProps = ({ location, ptw }) => ({
-  location: location && location.payload,
+  location,
   data: ptw && ptw.data
 });
 

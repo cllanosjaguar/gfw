@@ -44,7 +44,7 @@ const buildLocationDict = locations =>
     )) ||
   {};
 
-export const selectLocation = state => state.location && state.location.payload;
+export const selectLocation = state => state.location;
 export const selectRouteType = state => state.location && state.location.type;
 export const selectLocationQuery = state =>
   state.location && state.location.query;

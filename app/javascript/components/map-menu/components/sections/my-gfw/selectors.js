@@ -11,7 +11,7 @@ import {
 const selectLoading = state =>
   state.areas && state.myGfw && (state.areas.loading || state.myGfw.loading);
 const selectLoggedIn = state => state.myGfw && !isEmpty(state.myGfw.data);
-const selectLocation = state => state.location && state.location.payload;
+const selectLocation = state => state.location;
 const selectUserData = state => state.myGfw && state.myGfw.data;
 
 const getSortedAreas = createSelector(

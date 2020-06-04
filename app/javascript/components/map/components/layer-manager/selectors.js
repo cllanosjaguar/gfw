@@ -7,7 +7,7 @@ import {
   selectGeostore
 } from 'components/map/selectors';
 
-export const selectLocation = state => state.location && state.location.payload;
+export const selectLocation = state => state.location;
 
 export const getLayerManagerProps = createStructuredSelector({
   layers: getActiveLayersWithDates,

@@ -13,7 +13,7 @@ import LatestProvider from 'providers/latest-provider';
 import AreasProvider from 'providers/areas-provider';
 import PlanetBasemapsProvider from 'providers/planet-provider';
 
-import Map from 'components/map';
+// import Map from 'components/map';
 import ModalMeta from 'components/modals/meta';
 import ModalSource from 'components/modals/sources';
 import Share from 'components/modals/share';
@@ -59,9 +59,9 @@ class MainMapComponent extends PureComponent {
       handleClickMap,
       handleShowTooltip,
       recentActive,
-      handleClickAnalysis,
-      setMainMapAnalysisView,
-      onDrawComplete,
+      // handleClickAnalysis,
+      // setMainMapAnalysisView,
+      // onDrawComplete,
     } = this.props;
 
     return (
@@ -95,7 +95,7 @@ class MainMapComponent extends PureComponent {
             animateFill={false}
             open={showTooltip}
           >
-            <Map
+            {/* <Map
               className="main-map"
               onSelectBoundary={setMainMapAnalysisView}
               onDrawComplete={onDrawComplete}
@@ -105,7 +105,7 @@ class MainMapComponent extends PureComponent {
                   action: handleClickAnalysis,
                 },
               ]}
-            />
+            /> */}
           </Tooltip>
         </div>
         {!hidePanels && (

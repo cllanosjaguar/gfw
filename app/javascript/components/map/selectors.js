@@ -25,7 +25,7 @@ const selectMapData = state => state.map && state.map.data;
 const selectDatasets = state => state.datasets && state.datasets.data;
 const selectLatest = state => state.latest && state.latest.data;
 export const selectGeostore = state => state.geostore && state.geostore.data;
-const selectLocation = state => state.location && state.location.payload;
+const selectLocation = state => state.location;
 
 // CONSTS
 export const getBasemaps = () => basemaps;

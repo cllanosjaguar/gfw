@@ -18,8 +18,7 @@ const selectShowMap = state =>
   state.location && state.location.query && !!state.location.query.showMap;
 const selectLocation = state => state.location;
 const selectAreaError = state => state.areas && state.areas.error;
-const selectLocationType = state =>
-  state.location && state.location.payload && state.location.payload.type;
+const selectLocationType = state => state.location?.type;
 const selectCategory = state =>
   (state.location && state.location.query && state.location.query.category) ||
   'summary';

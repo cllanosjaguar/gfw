@@ -12,7 +12,7 @@ import {
 } from 'providers/areas-provider/selectors';
 
 // get list data
-export const selectLocation = state => state.location && state.location.payload;
+export const selectLocation = state => state?.location?.payload;
 export const selectLoading = state =>
   state.countryData &&
   state.areas &&

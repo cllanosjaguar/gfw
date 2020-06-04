@@ -10,7 +10,7 @@ import Map from 'pages/map';
 
 const MapLocationPage = (props) => (
   <Layout {...props}>
-    {props.locationName.includes('not found') ? (
+    {props?.locationName?.includes('not found') ? (
       <ConfirmationMessage title={props.locationName} error large />
     ) : (
       <Map />

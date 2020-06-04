@@ -21,7 +21,7 @@ const getLoading = state =>
   (state.countryData && state.countryData.loading);
 const getAnalysisLoading = state => state.analysis && state.analysis.loading;
 const getDatasets = state => state.datasets && state.datasets.data;
-const getLocation = state => state.location && state.location.payload;
+const getLocation = state => state.location;
 
 // setting from state
 export const getMenuSettings = createSelector([getMenuUrlState], urlState => ({

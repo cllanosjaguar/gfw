@@ -1,7 +1,6 @@
 import { createAction, createThunkAction } from 'utils/redux';
 import combine from 'turf-combine';
 import compact from 'lodash/compact';
-import { DASHBOARDS } from 'router';
 import { track } from 'app/analytics';
 
 import { fetchUmdLossGain } from 'services/analysis';
@@ -260,7 +259,7 @@ export const goToDashboard = createThunkAction(
     const { location } = getState() || {};
     const { payload, query } = location || {};
     dispatch({
-      type: DASHBOARDS,
+      type: '',
       payload,
       ...(query && {
         query

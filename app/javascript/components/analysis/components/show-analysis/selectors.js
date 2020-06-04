@@ -14,7 +14,7 @@ import { FOREST_GAIN, FOREST_LOSS } from 'data/layers';
 const gainID = FOREST_GAIN;
 const lossID = FOREST_LOSS;
 
-const selectLocation = state => state.location && state.location.payload;
+const selectLocation = state => state.location;
 const selectData = state => state.analysis && state.analysis.data;
 const selectError = state => state.analysis && state.analysis.error;
 

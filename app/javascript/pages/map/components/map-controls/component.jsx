@@ -46,9 +46,8 @@ class MapControlsButtons extends PureComponent {
   setPulseTourBtn = pulseTourBtn => this.setState({ pulseTourBtn });
 
   handleHidePanels = () => {
-    const { setMainMapSettings, setMenuSettings, hidePanels } = this.props;
+    const { setMainMapSettings, hidePanels } = this.props;
     setMainMapSettings({ hidePanels: !hidePanels });
-    setMenuSettings({ menuSection: '' });
     if (!hidePanels) {
       track('hidePanels');
     }
@@ -222,13 +221,13 @@ class MapControlsButtons extends PureComponent {
         animateFill={false}
         open={showBasemaps}
         onRequestClose={this.onBasemapsRequestClose}
-        html={
+        html={(
           <Basemaps
             onClose={this.toggleBasemaps}
             ref={this.setBasemapsRef}
             isDesktop={this.props.isDesktop}
           />
-        }
+        )}
       >
         {this.renderBasemapsBtn()}
       </Tooltip>
@@ -338,9 +337,15 @@ class MapControlsButtons extends PureComponent {
 
     return (
       <div className="map-position">
-        <span className="notranslate">zoom: {format('.2f')(zoom)}</span>
         <span className="notranslate">
-          lat, lon: {`${format('.5f')(latitude)}, ${format('.5f')(longitude)}`}
+          zoom:
+          {' '}
+          {format('.2f')(zoom)}
+        </span>
+        <span className="notranslate">
+          lat, lon:
+          {' '}
+          {`${format('.5f')(latitude)}, ${format('.5f')(longitude)}`}
         </span>
       </div>
     );
@@ -387,7 +392,6 @@ MapControlsButtons.propTypes = {
   setMainMapSettings: PropTypes.func,
   setShareModal: PropTypes.func,
   viewport: PropTypes.object,
-  setMenuSettings: PropTypes.func,
   setModalWelcomeOpen: PropTypes.func,
   mapTourOpen: PropTypes.bool,
   showBasemaps: PropTypes.bool,

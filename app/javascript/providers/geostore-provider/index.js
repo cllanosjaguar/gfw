@@ -18,7 +18,7 @@ const mapStateToProps = state => {
     activeArea:
       areas &&
       areas.data &&
-      areas.data.find(a => a.id === (location && location.payload.adm0))
+      areas.data.find(a => a.id === location?.adm0)
   };
 };
 

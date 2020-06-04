@@ -98,18 +98,18 @@ class AnalysisComponent extends PureComponent {
             <div className={cx('cancel-analysis', { fetching: loading })}>
               {!loading &&
                   error && (
-                <Button
-                  className="refresh-analysis-btn"
-                  onClick={() => handleFetchAnalysis(endpoints)}
-                >
-                      REFRESH ANALYSIS
-                </Button>
+                  <Button
+                    className="refresh-analysis-btn"
+                    onClick={() => handleFetchAnalysis(endpoints)}
+                  >
+                    REFRESH ANALYSIS
+                  </Button>
               )}
               <Button
                 className="cancel-analysis-btn"
                 onClick={handleCancelAnalysis}
               >
-                  CANCEL ANALYSIS
+                CANCEL ANALYSIS
               </Button>
               {!loading && error && <p className="error-message">{error}</p>}
             </div>
@@ -126,8 +126,7 @@ class AnalysisComponent extends PureComponent {
               analysis
             />
           )}
-          {!location.type &&
-            !location.adm0 &&
+          {!location.adm0 &&
             !isDeletedAoI && (
             <ChoseAnalysis
               checkingShape={checkingShape}
@@ -144,18 +143,17 @@ class AnalysisComponent extends PureComponent {
           <div className="analysis-actions">
             {location.type === 'country' &&
                 !location.areaId && (
-              <Button
-                className="analysis-action-btn"
-                theme="theme-button-light"
-                {...linkProps}
-                onClick={() =>
-                  track('analysisViewDashboards', {
-                    label: location.adm0
-                  })
-                }
-              >
-                    DASHBOARD
-              </Button>
+                <Button
+                  className="analysis-action-btn"
+                  theme="theme-button-light"
+                  {...linkProps}
+                  onClick={() =>
+                    track('analysisViewDashboards', {
+                      label: location.adm0
+                    })}
+                >
+                  DASHBOARD
+                </Button>
             )}
             {activeArea && (
               <Button
@@ -164,7 +162,7 @@ class AnalysisComponent extends PureComponent {
                 link={activeArea && `/dashboards/aoi/${activeArea.id}`}
                 tooltip={{ text: 'Go to Areas of Interest dashboard' }}
               >
-                  DASHBOARD
+                DASHBOARD
               </Button>
             )}
             {(!activeArea || (activeArea && !activeArea.userArea)) && (
@@ -179,28 +177,27 @@ class AnalysisComponent extends PureComponent {
                   }
                 }}
               >
-                  save in my gfw
+                save in my gfw
               </Button>
             )}
             {activeArea &&
-                activeArea.userArea && (
-              <Button
-                className="analysis-action-btn"
-                onClick={() =>
-                  setShareModal({
-                    title: 'Share this view',
-                    shareUrl: window.location.href.includes('embed')
-                      ? window.location.href.replace('/embed', '')
-                      : window.location.href,
-                    embedUrl: window.location.href.includes('embed')
-                      ? window.location.href
-                      : window.location.href.replace('/map', '/embed/map')
-                  })
-                }
-                tooltip={{ text: 'Share or embed this area' }}
-              >
-                    Share area
-              </Button>
+              activeArea.userArea && (
+                <Button
+                  className="analysis-action-btn"
+                  onClick={() =>
+                    setShareModal({
+                      title: 'Share this view',
+                      shareUrl: window.location.href.includes('embed')
+                        ? window.location.href.replace('/embed', '')
+                        : window.location.href,
+                      embedUrl: window.location.href.includes('embed')
+                        ? window.location.href
+                        : window.location.href.replace('/map', '/embed/map')
+                    })}
+                  tooltip={{ text: 'Share or embed this area' }}
+                >
+                  Share area
+                </Button>
             )}
           </div>
         )}
