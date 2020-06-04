@@ -17,16 +17,9 @@ import How from 'pages/about/section-how';
 import Contact from 'pages/about/section-contact';
 
 import mailIcon from 'assets/icons/mail.svg?sprite';
-import bgImage from './header-bg.jpg';
-import './styles.scss';
+import bgImage from './header-bg.jpg?webp';
 
-const sectionComponents = {
-  history: HistorySection,
-  impacts: Impacts,
-  partners: Partners,
-  how: How,
-  contact: Contact
-};
+import './styles.scss';
 
 const sections = {
   how: {
@@ -56,9 +49,17 @@ const sections = {
   },
 };
 
+const sectionComponents = {
+  history: HistorySection,
+  impacts: Impacts,
+  partners: Partners,
+  how: How,
+  contact: Contact,
+};
+
 class AboutPage extends PureComponent {
   static propTypes = {
-    setModalVideoData: PropTypes.func.isRequired
+    setModalVideoData: PropTypes.func.isRequired,
   };
 
   render() {
@@ -85,7 +86,7 @@ class AboutPage extends PureComponent {
         />
         <Projects setModalVideoData={setModalVideoData} />
         {sections &&
-          Object.keys(sections).map(s => {
+          Object.keys(sections).map((s) => {
             const section = sections[s];
             const PageComponent = sectionComponents[section.component];
             return PageComponent ? (
