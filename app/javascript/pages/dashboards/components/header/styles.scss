@@ -62,7 +62,7 @@
       margin-bottom: 0;
     }
 
-    .breadcrumb-link {
+    .breadcrumb-link button {
       display: flex;
       align-items: center;
       color: $green-gfw;
@@ -70,6 +70,7 @@
       width: fit-content;
       margin-bottom: rem(30px);
       font-weight: 400;
+      cursor: pointer;
 
       .breadcrumb-icon {
         fill: $green-gfw;
