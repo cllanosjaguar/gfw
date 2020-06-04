@@ -4,9 +4,8 @@ import { Tooltip, ResponsiveContainer } from 'recharts';
 import isEmpty from 'lodash/isEmpty';
 import { format } from 'd3-format';
 import OutsideClickHandler from 'react-outside-click-handler';
-
-import ChartToolTip from '../components/chart-tooltip';
 import Sankey from './component';
+import ChartToolTip from '../components/chart-tooltip';
 import SankeyLink from './sankey-link';
 import SankeyNode from './sankey-node';
 import styles from './styles.scss';
@@ -134,7 +133,9 @@ SankeyChart.propTypes = {
     /** Configuration for each node */
     node: PropTypes.object,
     /** Configuration for the aspect of the responsive container */
-    aspect: PropTypes.number
+    aspect: PropTypes.number,
+    nodeTitles: PropTypes.array,
+    link: PropTypes.string
   }),
   /** Set margin of sankey component, used to calculate a position of all child elements inside sankey charts  */
   margin: PropTypes.shape({
@@ -157,10 +158,8 @@ SankeyChart.defaultProps = {
   nodePadding: 10,
   containerWidth: 800,
   config: {},
-  customTooltip: null,
   customLink: null,
   customNode: null,
-  tooltipChildren: null,
   margin: { top: 10 }
 };
 
