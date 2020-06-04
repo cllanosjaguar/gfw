@@ -150,18 +150,20 @@ class Card extends PureComponent {
                 native
               />
               {selectorValue.value && selectorValue.value !== 'placeholder' && (
-                <Button
-                  className="selector-btn-link"
-                  theme="square"
-                  extLink={
+                <a
+                  href={
                     selectorValue.path ||
                     (selector.options &&
                       selector.options[0] &&
                       selector.options[0].path)
                   }
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Icon icon={arrowIcon} />
-                </Button>
+                  <Button className="selector-btn-link" theme="square">
+                    <Icon icon={arrowIcon} />
+                  </Button>
+                </a>
               )}
             </div>
           )}

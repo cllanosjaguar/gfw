@@ -84,7 +84,7 @@ export default {
     hideFooter: true,
     priority: '0.6',
     allowedParams: {
-      topic: ['biodiversity', 'climate', 'commodities', 'water'],
+      topic: ['biodiversity', 'climate', 'commodities', 'water', 'fires'],
     },
   },
   '/my-gfw': {
