@@ -13,7 +13,7 @@ export const getUserProfile = createThunkAction(
     const token = !isServer && (urlToken || localStorage.getItem('userToken'));
     if (token) {
       dispatch(setMyGFWLoading({ loading: true, error: false }));
-      checkLoggedIn()
+      checkLoggedIn(token)
         .then(authResponse => {
           getProfile(authResponse.data.id)
             .then(response => {

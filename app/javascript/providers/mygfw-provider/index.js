@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
+import useRouter from 'utils/router';
 
 import { setUserToken } from 'services/user';
 
@@ -10,18 +10,12 @@ import reducers, { initialState } from './reducers';
 
 class MyGFWProvider extends PureComponent {
   static propTypes = {
-    getUserProfile: PropTypes.func.isRequired,
-    router: PropTypes.object.isRequired
+    getUserProfile: PropTypes.func.isRequired
   };
 
-  selectLocalToken = () =>
-  typeof window !== 'undefined'
-    ? localStorage && localStorage.getItem('mygfw_token')
-    : '';
-
   componentDidMount() {
-    const { getUserProfile, router } = this.props;
-    const { query, push, pathname } = router;
+    const { getUserProfile } = this.props;
+    const { query, push, pathname } = useRouter();
     const urlToken = query?.token;
 
     if (urlToken) {
@@ -47,4 +41,4 @@ export const reduxModule = {
   initialState,
 };
 
-export default withRouter(connect(null, actions)(MyGFWProvider));
+export default connect(null, actions)(MyGFWProvider);
