@@ -54,7 +54,7 @@ class Header extends PureComponent {
   handleContactUsOpen = () => {
     const { openContactUsModal } = this.props;
     if (openContactUsModal) {
-      openContactUsModal();
+      openContactUsModal(true);
     } else {
       window.location.href = `https://www.globalforestwatch.org/search?query=${this.state.search}`;
     }

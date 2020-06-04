@@ -8,6 +8,7 @@ import Header from 'components/header';
 import Footer from 'components/footer';
 import Cookies from 'components/cookies';
 import Button from 'components/ui/button';
+import ContactUsModal from 'components/modals/contact-us';
 import gfwLogo from 'assets/logos/gfw.png';
 
 import 'styles/styles.scss';
@@ -22,7 +23,7 @@ class App extends PureComponent {
     router: PropTypes.object,
     embed: PropTypes.bool,
     fullScreen: PropTypes.bool,
-    hideFooter: PropTypes.bool
+    hideFooter: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -48,7 +49,7 @@ class App extends PureComponent {
       children,
       embed,
       fullScreen,
-      hideFooter
+      hideFooter,
     } = this.props;
 
     return (
@@ -56,7 +57,7 @@ class App extends PureComponent {
         className={cx('l-root', {
           '-full-screen': fullScreen,
           '-embed': embed,
-          '-trase': isTrase
+          '-trase': isTrase,
         })}
       >
         {!embed && <Header loggedIn={loggedIn} fullScreen={fullScreen} />}
@@ -65,12 +66,8 @@ class App extends PureComponent {
             <img src={gfwLogo} alt="Global Forest Watch" />
           </a>
         )}
-        <div className="page">
-          {children}
-        </div>
-        {embed &&
-          !isGFW &&
-          !isTrase && (
+        <div className="page">{children}</div>
+        {embed && !isGFW && !isTrase && (
           <div className="embed-footer">
             <p>For more info</p>
             <Button
@@ -82,6 +79,7 @@ class App extends PureComponent {
           </div>
         )}
         <Cookies />
+        <ContactUsModal />
         {!hideFooter && !embed && <Footer />}
       </div>
     );

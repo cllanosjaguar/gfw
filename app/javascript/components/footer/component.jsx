@@ -25,7 +25,7 @@ const images = require.context('assets/logos', true);
 class Footer extends PureComponent {
   static propTypes = {
     NavLinkComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-    openContactUsModal: PropTypes.func,
+    setModalContactUsOpen: PropTypes.func,
   };
 
   renderCarousel = (slidesToShow) => (
@@ -79,7 +79,7 @@ class Footer extends PureComponent {
   );
 
   render() {
-    const { NavLinkComponent, openContactUsModal } = this.props;
+    const { NavLinkComponent, setModalContactUsOpen } = this.props;
 
     return (
       <div className="c-footer">
@@ -154,7 +154,10 @@ class Footer extends PureComponent {
             </div>
             <div className="column small-12">
               <div className="footer-contact-us">
-                <button className="contact-btn" onClick={openContactUsModal}>
+                <button
+                  className="contact-btn"
+                  onClick={() => setModalContactUsOpen(true)}
+                >
                   CONTACT US
                 </button>
                 {NavLinkComponent ? (

@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 import omit from 'lodash/omit';
 import oldLayers from 'data/v2-v3-datasets-layers.json';
+import useRouter from 'utils/router';
 
 const oldLayersAndDatasets = oldLayers.reduce(
   (obj, item) => ({
@@ -110,10 +111,8 @@ export const encodeStateForUrl = (params) => {
   return queryString.stringify(paramsParsed);
 };
 
-export const setComponentStateToUrl = ({ key, subKey, change, state }) => {
-  const {
-    location: { query, payload, type },
-  } = state();
+export const setComponentStateToUrl = ({ key, subKey, change }) => {
+  const { pushQuery, pathname, query } = useRouter();
   let params = change;
   if (query && query[subKey || key] && !!change && typeof change === 'object') {
     params = {
@@ -126,15 +125,13 @@ export const setComponentStateToUrl = ({ key, subKey, change, state }) => {
   const cleanLocationQuery =
     !change && query ? omit(query, [subKey || key]) : query;
 
-  return {
-    key,
-    type,
-    payload,
+  pushQuery({
+    pathname,
     query: {
       ...cleanLocationQuery,
       ...(params && {
         [subKey || key]: params,
       }),
     },
-  };
+  });
 };

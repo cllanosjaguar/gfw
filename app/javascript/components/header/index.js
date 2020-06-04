@@ -1,4 +1,7 @@
 import { createElement, PureComponent } from 'react';
+import { connect } from 'react-redux';
+
+import { setModalContactUsOpen } from 'components/modals/contact-us/actions';
 
 import config from './config';
 import Component from './component';
@@ -19,4 +22,6 @@ class HeaderContainer extends PureComponent {
   }
 }
 
-export default HeaderContainer;
+export default connect(null, { openContactUsModal: setModalContactUsOpen })(
+  HeaderContainer
+);
