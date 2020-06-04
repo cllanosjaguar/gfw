@@ -6,9 +6,9 @@ import PageComponent from './component';
 import config from './config';
 
 const mapStateToProps = ({ news }) => ({
-  news: news && news.data,
-  newsLoading: news && news.loading,
-  ...config
+  news: news?.data,
+  newsLoading: news?.loading,
+  ...config,
 });
 
 export default connect(mapStateToProps, actions)(PageComponent);
