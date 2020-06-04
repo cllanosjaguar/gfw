@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { initGA, handlePageTrack } from 'app/analytics';
 import checkBrowser from 'utils/browser';
+import { MediaContextProvider } from 'utils/responsive';
 
 import Header from 'components/header';
 import Footer from 'components/footer';
@@ -53,35 +54,37 @@ class App extends PureComponent {
     } = this.props;
 
     return (
-      <div
-        className={cx('l-root', {
-          '-full-screen': fullScreen,
-          '-embed': embed,
-          '-trase': isTrase,
-        })}
-      >
-        {!embed && <Header loggedIn={loggedIn} fullScreen={fullScreen} />}
-        {embed && (
-          <a className="page-logo" href="/" target="_blank">
-            <img src={gfwLogo} alt="Global Forest Watch" />
-          </a>
-        )}
-        <div className="page">{children}</div>
-        {embed && !isGFW && !isTrase && (
-          <div className="embed-footer">
-            <p>For more info</p>
-            <Button
-              className="embed-btn"
-              extLink={window.location.href.replace('/embed', '')}
-            >
-              EXPLORE ON GFW
-            </Button>
-          </div>
-        )}
-        <Cookies />
-        <ContactUsModal />
-        {!hideFooter && !embed && <Footer />}
-      </div>
+      <MediaContextProvider>
+        <div
+          className={cx('l-root', {
+            '-full-screen': fullScreen,
+            '-embed': embed,
+            '-trase': isTrase,
+          })}
+        >
+          {!embed && <Header loggedIn={loggedIn} fullScreen={fullScreen} />}
+          {embed && (
+            <a className="page-logo" href="/" target="_blank">
+              <img src={gfwLogo} alt="Global Forest Watch" />
+            </a>
+          )}
+          <div className="page">{children}</div>
+          {embed && !isGFW && !isTrase && (
+            <div className="embed-footer">
+              <p>For more info</p>
+              <Button
+                className="embed-btn"
+                extLink={window.location.href.replace('/embed', '')}
+              >
+                EXPLORE ON GFW
+              </Button>
+            </div>
+          )}
+          <Cookies />
+          <ContactUsModal />
+          {!hideFooter && !embed && <Footer />}
+        </div>
+      </MediaContextProvider>
     );
   }
 }
