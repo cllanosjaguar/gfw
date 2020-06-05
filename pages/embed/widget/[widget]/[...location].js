@@ -2,20 +2,20 @@ import PropTypes from 'prop-types';
 
 import Layout from 'app/layouts/root';
 import ConfirmationMessage from 'components/confirmation-message';
-import Map from 'pages/map';
+import Dashboards from 'pages/dashboards/components/embed';
 
-const MapLocationPage = (props) => (
+const DashboardsLocationPage = (props) => (
   <Layout {...props}>
     {props?.locationName?.includes('not found') ? (
       <ConfirmationMessage title={props.locationName} error large />
     ) : (
-      <Map />
+      <Dashboards />
     )}
   </Layout>
 );
 
-MapLocationPage.propTypes = {
+DashboardsLocationPage.propTypes = {
   locationName: PropTypes.string.isRequired,
 };
 
-export default MapLocationPage;
+export default DashboardsLocationPage;

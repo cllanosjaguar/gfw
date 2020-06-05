@@ -23,7 +23,7 @@ const getDrawGeostoreId = (state) => state.draw && state.draw.geostoreId;
 
 // SELECTORS
 export const getEmbed = createSelector([selectLocation], (location) =>
-  location?.pathname?.includes('embed')
+  location?.pathname?.includes('/embed')
 );
 
 export const getMainMapSettings = createSelector(

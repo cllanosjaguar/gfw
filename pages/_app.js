@@ -58,6 +58,7 @@ class MyApp extends App {
     dispatch({
       type: 'setLocation',
       payload: {
+        pathname,
         ...location,
         ...(!isEmpty(decodedQuery) && { query: decodedQuery }),
       },
