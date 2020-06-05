@@ -143,7 +143,6 @@
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-first-router": "0.0.16-next",
     "redux-thunk": "^2.3.0",
     "reselect": "4.0.0",
     "responsive-loader": "^1.2.0",
