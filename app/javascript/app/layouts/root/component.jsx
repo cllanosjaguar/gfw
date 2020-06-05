@@ -10,6 +10,7 @@ import Footer from 'components/footer';
 import Cookies from 'components/cookies';
 import Button from 'components/ui/button';
 import ContactUsModal from 'components/modals/contact-us';
+import NavLink from 'components/nav-link';
 import gfwLogo from 'assets/logos/gfw.png';
 
 import 'styles/styles.scss';
@@ -62,7 +63,21 @@ class App extends PureComponent {
             '-trase': isTrase,
           })}
         >
-          {!embed && <Header loggedIn={loggedIn} fullScreen={fullScreen} />}
+          {!embed && (
+            <Header
+              loggedIn={loggedIn}
+              fullScreen={fullScreen}
+              NavLinkComponent={({
+                children: headerChildren,
+                className,
+                ...props
+              }) => (
+                <NavLink {...props}>
+                  <a className={className}>{headerChildren}</a>
+                </NavLink>
+              )}
+            />
+          )}
           {embed && (
             <a className="page-logo" href="/" target="_blank">
               <img src={gfwLogo} alt="Global Forest Watch" />

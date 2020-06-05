@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link as AnchorLink } from 'react-scroll';
-import Link from 'next/link';
+import NavLink from 'components/nav-link';
 
 import Icon from 'components/ui/icon';
 
@@ -52,12 +52,17 @@ class SubNavMenu extends PureComponent {
                   );
                 } else {
                   LinkComponent = (
-                    <Link href={link.href} as={link.as}>
+                    <NavLink
+                      href={link.href}
+                      as={link.as}
+                      activeClassName="active"
+                      activeShallow={link.activeShallow}
+                    >
                       <a className="text -paragraph-5 -color-8">
                         {link.icon && <Icon icon={link.icon} />}
                         <span>{link.label}</span>
                       </a>
-                    </Link>
+                    </NavLink>
                   );
                 }
                 return (
