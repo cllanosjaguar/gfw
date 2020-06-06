@@ -4,6 +4,10 @@ import Layout from 'app/layouts/root';
 import ConfirmationMessage from 'components/confirmation-message';
 import Map from 'pages/map';
 
+import getLocationData from 'services/location';
+
+export const getServerSideProps = getLocationData;
+
 const MapLocationPage = (props) => (
   <Layout {...props}>
     {props?.locationName?.includes('not found') ? (

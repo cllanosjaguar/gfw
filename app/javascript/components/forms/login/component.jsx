@@ -21,16 +21,16 @@ const AUTH_URL = `${process.env.GFW_API}/auth`;
 const socialButtons = [
   {
     label: 'Twitter',
-    value: 'twitter'
+    value: 'twitter',
   },
   {
     label: 'Facebook',
-    value: 'facebook'
+    value: 'facebook',
   },
   {
     label: 'Google',
-    value: 'google'
-  }
+    value: 'google',
+  },
 ];
 
 class LoginForm extends PureComponent {
@@ -40,11 +40,11 @@ class LoginForm extends PureComponent {
     resetUserPassword: PropTypes.func.isRequired,
     simple: PropTypes.bool,
     narrow: PropTypes.bool,
-    initialValues: PropTypes.object
+    initialValues: PropTypes.object,
   };
 
   state = {
-    showForm: 'login'
+    showForm: 'login',
   };
 
   render() {
@@ -54,7 +54,7 @@ class LoginForm extends PureComponent {
       loginUser,
       initialValues,
       simple,
-      narrow
+      narrow,
     } = this.props;
     const { showForm } = this.state;
 
@@ -66,8 +66,8 @@ class LoginForm extends PureComponent {
         altLabel: 'Not a member? <b>Sign up!</b>',
         confirmation: {
           title: '',
-          description: ''
-        }
+          description: '',
+        },
       },
       register: {
         submit: 'register',
@@ -78,8 +78,8 @@ class LoginForm extends PureComponent {
           title:
             'Thank you for registering, please check your email and confirm your account.',
           description:
-            "<b>If it doesn't appear check your spam folder.</b> You may wish to read our <a href='/privacy-policy' target='_blank'>privacy policy</a>, which provides further information about how we use personal data."
-        }
+            "<b>If it doesn't appear check your spam folder.</b> You may wish to read our <a href='/privacy-policy' target='_blank'>privacy policy</a>, which provides further information about how we use personal data.",
+        },
       },
       reset: {
         submit: 'reset',
@@ -90,9 +90,9 @@ class LoginForm extends PureComponent {
           title:
             'Thank you. Please, check your inbox and follow instructions to reset your password.',
           description:
-            "<b>If it doesn't appear check your spam folder.</b> You may wish to read our <a href='/privacy-policy' target='_blank'>privacy policy</a>, which provides further information about how we use personal data."
-        }
-      }
+            "<b>If it doesn't appear check your spam folder.</b> You may wish to read our <a href='/privacy-policy' target='_blank'>privacy policy</a>, which provides further information about how we use personal data.",
+        },
+      },
     };
 
     const { submit, submitFunc, altView, altLabel, confirmation } = formMeta[
@@ -108,7 +108,7 @@ class LoginForm extends PureComponent {
           submitError,
           submitSucceeded,
           valid,
-          form: { reset }
+          form: { reset },
         }) => (
           <div className={cx('c-login-form', { simple })}>
             <div className="row">
@@ -140,7 +140,7 @@ class LoginForm extends PureComponent {
                     className={cx('column small-12', { 'medium-5': !narrow })}
                   >
                     <div className="social-btns">
-                      {socialButtons.map(s => (
+                      {socialButtons.map((s) => (
                         <a
                           key={s.value}
                           href={`${AUTH_URL}/${
@@ -150,10 +150,10 @@ class LoginForm extends PureComponent {
                           )}`}
                           target="_self"
                         >
-                          <Button
-                            className={`social-btn -${s.value}`}
-                          >
-                            Login with {s.label}
+                          <Button className={`social-btn -${s.value}`}>
+                            Login with 
+                            {' '}
+                            {s.label}
                           </Button>
                         </a>
                       ))}
@@ -161,13 +161,13 @@ class LoginForm extends PureComponent {
                   </div>
                   <div
                     className={cx('column small-12', {
-                      'medium-6 medium-offset-1': !narrow
+                      'medium-6 medium-offset-1': !narrow,
                     })}
                   >
                     {showForm === 'reset' && (
                       <p>
-                        To reset your password, enter your email and follow
-                        the instructions.
+                        To reset your password, enter your email and follow the
+                        instructions.
                       </p>
                     )}
                     <form className="c-login-form" onSubmit={handleSubmit}>
@@ -220,7 +220,7 @@ class LoginForm extends PureComponent {
                         <button
                           className="change-form"
                           theme="theme-button-light"
-                          onClick={e => {
+                          onClick={(e) => {
                             e.preventDefault();
                             this.setState({ showForm: altView });
                             reset();

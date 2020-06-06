@@ -4,9 +4,9 @@ import Layout from 'app/layouts/root';
 import ConfirmationMessage from 'components/confirmation-message';
 import Dashboards from 'pages/dashboards';
 
-// import getLocationData from 'app/location';
+import getLocationData from 'services/location';
 
-// export const getServerSideProps = getLocationData;
+export const getServerSideProps = getLocationData;
 
 const DashboardsLocationPage = (props) => (
   <Layout {...props}>

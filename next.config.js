@@ -39,15 +39,11 @@ const nextConfig = {
       return [
         {
           source: '/map',
-          destination: `/map/global`,
+          destination: '/map/global',
         },
         {
           source: '/dashboards',
           destination: `/dashboards/global`,
-        },
-        {
-          source: '/grants-and-fellowships',
-          destination: `/grants-and-fellowships/projects`,
         },
       ];
     },

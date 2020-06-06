@@ -13,6 +13,8 @@ import ContactUsModal from 'components/modals/contact-us';
 import NavLink from 'components/nav-link';
 import gfwLogo from 'assets/logos/gfw.png';
 
+import Head from './head';
+
 import 'styles/styles.scss';
 import './styles.scss';
 
@@ -26,6 +28,11 @@ class App extends PureComponent {
     embed: PropTypes.bool,
     fullScreen: PropTypes.bool,
     hideFooter: PropTypes.bool,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    keywords: PropTypes.string,
+    titleParams: PropTypes.object,
+    descriptionParams: PropTypes.object,
   };
 
   componentDidMount() {
@@ -52,54 +59,68 @@ class App extends PureComponent {
       embed,
       fullScreen,
       hideFooter,
+      title,
+      description,
+      keywords,
+      titleParams,
+      descriptionParams,
     } = this.props;
 
     return (
-      <MediaContextProvider>
-        <div
-          className={cx('l-root', {
-            '-full-screen': fullScreen,
-            '-embed': embed,
-            '-trase': isTrase,
-          })}
-        >
-          {!embed && (
-            <Header
-              loggedIn={loggedIn}
-              fullScreen={fullScreen}
-              NavLinkComponent={({
-                children: headerChildren,
-                className,
-                ...props
-              }) => (
-                <NavLink {...props}>
-                  <a className={className}>{headerChildren}</a>
-                </NavLink>
-              )}
-            />
-          )}
-          {embed && (
-            <a className="page-logo" href="/" target="_blank">
-              <img src={gfwLogo} alt="Global Forest Watch" />
-            </a>
-          )}
-          <div className="page">{children}</div>
-          {embed && !isGFW && !isTrase && (
-            <div className="embed-footer">
-              <p>For more info</p>
-              <Button
-                className="embed-btn"
-                extLink={window.location.href.replace('/embed', '')}
-              >
-                EXPLORE ON GFW
-              </Button>
-            </div>
-          )}
-          <Cookies />
-          <ContactUsModal />
-          {!hideFooter && !embed && <Footer />}
-        </div>
-      </MediaContextProvider>
+      <>
+        <Head
+          title={title}
+          description={description}
+          keywords={keywords}
+          titleParams={titleParams}
+          descriptionParams={descriptionParams}
+        />
+        <MediaContextProvider>
+          <div
+            className={cx('l-root', {
+              '-full-screen': fullScreen,
+              '-embed': embed,
+              '-trase': isTrase,
+            })}
+          >
+            {!embed && (
+              <Header
+                loggedIn={loggedIn}
+                fullScreen={fullScreen}
+                NavLinkComponent={({
+                  children: headerChildren,
+                  className,
+                  ...props
+                }) => (
+                  <NavLink {...props}>
+                    <a className={className}>{headerChildren}</a>
+                  </NavLink>
+                )}
+              />
+            )}
+            {embed && (
+              <a className="page-logo" href="/" target="_blank">
+                <img src={gfwLogo} alt="Global Forest Watch" />
+              </a>
+            )}
+            <div className="page">{children}</div>
+            {embed && !isGFW && !isTrase && (
+              <div className="embed-footer">
+                <p>For more info</p>
+                <Button
+                  className="embed-btn"
+                  extLink={window.location.href.replace('/embed', '')}
+                >
+                  EXPLORE ON GFW
+                </Button>
+              </div>
+            )}
+            <Cookies />
+            <ContactUsModal />
+            {!hideFooter && !embed && <Footer />}
+          </div>
+        </MediaContextProvider>
+      </>
     );
   }
 }
