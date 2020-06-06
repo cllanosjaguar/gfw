@@ -23,8 +23,6 @@ class App extends PureComponent {
     title: PropTypes.string,
     description: PropTypes.string,
     keywords: PropTypes.string,
-    titleParams: PropTypes.object,
-    descriptionParams: PropTypes.object,
   };
 
   componentDidMount() {
@@ -49,9 +47,7 @@ class App extends PureComponent {
       title,
       description,
       keywords,
-      titleParams,
-      descriptionParams,
-      router
+      router,
     } = this.props;
 
     const isGFW = router?.query?.gfw;
@@ -63,14 +59,13 @@ class App extends PureComponent {
           title={title}
           description={description}
           keywords={keywords}
-          titleParams={titleParams}
-          descriptionParams={descriptionParams}
+          noIndex
         />
         <MediaContextProvider>
           <div
             className={cx('l-embed', {
               '-trase': isTrase,
-              '-full-screen': fullScreen
+              '-full-screen': fullScreen,
             })}
           >
             <a className="page-logo" href="/" target="_blank">
@@ -82,7 +77,9 @@ class App extends PureComponent {
                 <p>For more info</p>
                 <Button
                   className="embed-btn"
-                  extLink={!isServer && window.location.href.replace('/embed', '')}
+                  extLink={
+                    !isServer && window.location.href.replace('/embed', '')
+                  }
                 >
                   EXPLORE ON GFW
                 </Button>

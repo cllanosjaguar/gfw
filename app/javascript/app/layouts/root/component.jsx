@@ -27,12 +27,13 @@ class App extends PureComponent {
     title: PropTypes.string,
     description: PropTypes.string,
     keywords: PropTypes.string,
+    noIndex: PropTypes.bool,
   };
 
   static defaultProps = {
     showHeader: true,
-    showFooter: true
-  }
+    showFooter: true,
+  };
 
   componentDidMount() {
     const { router } = this.props;
@@ -59,6 +60,7 @@ class App extends PureComponent {
       title,
       description,
       keywords,
+      noIndex,
     } = this.props;
 
     return (
@@ -67,11 +69,10 @@ class App extends PureComponent {
           title={title}
           description={description}
           keywords={keywords}
+          noIndex={noIndex}
         />
         <MediaContextProvider>
-          <div
-            className={cx('l-root', { '-full-screen': fullScreen })}
-          >
+          <div className={cx('l-root', { '-full-screen': fullScreen })}>
             {showHeader && (
               <Header
                 loggedIn={loggedIn}

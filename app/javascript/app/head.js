@@ -7,8 +7,7 @@ class AppHead extends PureComponent {
     title: PropTypes.string,
     description: PropTypes.string,
     keywords: PropTypes.string,
-    titleParams: PropTypes.object,
-    descriptionParams: PropTypes.object,
+    noIndex: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -20,41 +19,8 @@ class AppHead extends PureComponent {
       'Forest monitoring, data, technology, world forest, protection, deforestation',
   };
 
-  getTitle = () => {
-    const { title, titleParams } = this.props;
-    let newTitle = title;
-    Object.keys(titleParams).forEach((key) => {
-      newTitle = newTitle.replace(`{${key}}`, titleParams[key]);
-    });
-
-    return newTitle;
-  };
-
-  getDescription = () => {
-    const { description, descriptionParams } = this.props;
-    let newDescription = description;
-    Object.keys(descriptionParams).forEach((key) => {
-      newDescription = newDescription.replace(
-        `{${key}}`,
-        descriptionParams[key]
-      );
-    });
-
-    return newDescription;
-  };
-
   render() {
-    const {
-      title: titleTemplate,
-      description: descriptionTemplate,
-      keywords,
-      titleParams,
-      descriptionParams,
-    } = this.props;
-    const title = titleParams ? this.getTitle() : titleTemplate;
-    const description = descriptionParams
-      ? this.getDescription()
-      : descriptionTemplate;
+    const { title, description, keywords, noIndex } = this.props;
 
     return (
       <Head>
@@ -69,6 +35,7 @@ class AppHead extends PureComponent {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/preview.jpg" />
+        {noIndex && <meta name="robots" content="noindex" />}
       </Head>
     );
   }

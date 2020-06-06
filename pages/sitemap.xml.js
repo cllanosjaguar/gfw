@@ -1,5 +1,4 @@
 import React from 'react';
-import routes from './_routes';
 import {
   APP_URL,
   DEVELOPERS_URL,
@@ -8,10 +7,63 @@ import {
   BLOG_URL,
 } from 'utils/constants';
 
+const config = [
+  {
+    path: '/',
+    priority: '1.0',
+  },
+  {
+    path: '/map',
+    priority: '0.8',
+  },
+  {
+    path: '/dashboards/global',
+    priority: '0.8',
+  },
+  {
+    path: '/topics/[topic]',
+    priority: '0.8',
+    allowedParams: {
+      topic: ['biodiversity', 'climate', 'commodities', 'water', 'fires'],
+    },
+  },
+  {
+    path: '/about',
+    priority: '0.8',
+  },
+  {
+    path: '/my-gfw',
+    priority: '0.8',
+  },
+  {
+    path: '/privacy-policy',
+    priority: '0.8',
+  },
+  {
+    path: '/terms',
+    priority: '0.8',
+  },
+  {
+    path: '/subscrive',
+    priority: '0.8',
+  },
+  {
+    path: '/search',
+    priority: '0.8',
+  },
+  {
+    path: '/grants-and-fellowships/[tab]',
+    priority: '0.8',
+    allowedParams: {
+      tab: ['projects', 'about', 'apply'],
+    },
+  },
+];
+
 const sitemapXml = () => {
   let pageXml = '';
-  Object.keys(routes).forEach((path) => {
-    const { priority, allowedParams } = routes[path];
+  config.forEach((route) => {
+    const { priority, allowedParams, path } = route;
     if (priority && !allowedParams) {
       pageXml = `${pageXml}<url><loc>${APP_URL}${path}</loc><changefreq>weekly</changefreq><priority>${
         priority || '1.0'

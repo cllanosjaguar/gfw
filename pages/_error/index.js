@@ -9,9 +9,11 @@ import './styles.scss';
 const Error = ({ statusCode }) => (
   <Layout
     title={
-      `An error ${statusCode} occurred` || "We're sorry, something went wrong | Global Forest Watch"
+      `An error ${statusCode} occurred` ||
+      "We're sorry, something went wrong | Global Forest Watch"
     }
     description="Try refreshing the page or check your connection."
+    noIndex
   >
     <div className="l-error-page">
       <div className="row">

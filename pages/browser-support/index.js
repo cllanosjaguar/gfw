@@ -9,7 +9,7 @@ const props = {
   title: 'Browser Not Supported',
   description:
     'Oops, your browser isn’t supported. Please upgrade to a supported browser and try loading the website again.',
-}
+};
 
 const BrowserPage = () => (
   <Layout
@@ -18,14 +18,12 @@ const BrowserPage = () => (
     showHeader={false}
     showFooter={false}
     showCookies={false}
+    noIndex
   >
     <div className="l-browser-support-page">
       <div className="row">
         <div className="column small-12 medium-8 medium-offset-2">
-          <ConfirmationMessage
-            {...props}
-            error
-          />
+          <ConfirmationMessage {...props} error />
         </div>
       </div>
     </div>

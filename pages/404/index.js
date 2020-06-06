@@ -7,21 +7,16 @@ import './styles.scss';
 
 const props = {
   title: 'Page Not Found',
-  description:
-    'You may have mistyped the address or the page may have moved.',
-  showCookies: false
-}
+  description: 'You may have mistyped the address or the page may have moved.',
+  showCookies: false,
+};
 
 const NotFoundPage = () => (
-  <Layout {...props} title="Page Not Found | Global Forest Watch">
+  <Layout {...props} title="Page Not Found | Global Forest Watch" noIndex>
     <div className="l-404-page">
       <div className="row">
         <div className="column small-12 medium-8 medium-offset-2">
-          <ConfirmationMessage
-            {...props}
-            error
-            large
-          />
+          <ConfirmationMessage {...props} error large />
         </div>
       </div>
     </div>
