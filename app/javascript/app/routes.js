@@ -1,27 +1,20 @@
 export default {
   '/': {
-    title: 'Forest Monitoring Designed for Action',
+    title:
+      'Forest Monitoring, Land Use & Deforestation Trends | Global Forest Watch',
     description:
-      'Global Forest Watch offers the latest data, technology and tools that empower people everywhere to better protect forests.',
+      'Global Forest Watch offers free, real-time data, technology and tools for monitoring the world’s forests, enabling better protection against illegal deforestation and unsustainable practices.',
     keywords:
-      'forests, forest data, forest monitoring, forest landscapes, maps, gis, visualize, geospatial, forest analysis, forest news, forest alerts, conservation, forest updates, forest watch, analysis, deforestation, deforesting, tree cover loss, explore forests, mapping, trees, forest loss',
+      'Forest monitoring, data, technology, world forest, protection, deforestation',
     priority: '1.0',
   },
-  '/map': {
-    title: 'Interactive Map',
-    description:
-      'Explore the status of forests worldwide by layering data to create custom maps of forest change, cover, and use.',
-    keywords:
-      'GFW, map, forests, forest map, visualization, data, forest data, geospatial, gis, geo, spatial, analysis, local data, global data, forest analysis, explore, layer, terrain, alerts, tree, cover, loss, search, country, deforestation',
-    fullScreen: true,
-    priority: '0.8',
-  },
   '/map/[...location]': {
-    title: '{locationName} | Interactive Map',
+    title:
+      '{locationName} Interactive World Forest Map & Tree Cover Change Data | GFW',
     description:
-      'Explore the status of forests in {locationName} by layering data to create custom maps of forest change, cover and use.',
+      'Explore the state of forests {locationName} by analyzing tree cover change on GFW’s interactive global forest map using satellite data. Learn about deforestation rates and other land use practices, forest fires, forest communities, biodiversity and much more.',
     keywords:
-      'GFW, map, forests, forest map, visualization, data, forest data, geospatial, gis, geo, spatial, analysis, local data, global data, forest analysis, explore, layer, terrain, alerts, tree, cover, loss, search, country, deforestation',
+      '{locationName} Interactive world forest map, tree cover map, tree cover change, data, global forest cover change, satellite monitoring, deforestation, land use, forest communities, biodiversity',
     fullScreen: true,
     hideFooter: true,
   },
