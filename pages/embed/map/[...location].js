@@ -1,7 +1,17 @@
-import getLocationData from 'services/location';
+import LayoutEmbed from 'app/layouts/embed';
+import Map from 'pages/map';
 
-import MapPage from '../../map/[...location]';
+import { getServerSideProps as getProps } from '../../map/[...location]';
 
-export const getServerSideProps = getLocationData;
+export const getServerSideProps = getProps;
 
-export default MapPage;
+const MapEmbedPage = (props) => (
+  <LayoutEmbed
+    {...props}
+    fullScreen
+  >
+    <Map embed />
+  </LayoutEmbed>
+);
+
+export default MapEmbedPage;

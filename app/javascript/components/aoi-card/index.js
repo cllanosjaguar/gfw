@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { selectActiveLang } from 'app/layouts/root/selectors';
+import { getActiveLang } from 'utils/lang';
 
 import Component from './component';
 
 export default connect(state => ({
-  lang: selectActiveLang(state)
+  lang: getActiveLang(state)
 }))(Component);

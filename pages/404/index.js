@@ -1,19 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Layout from 'app/layouts/root';
 import ConfirmationMessage from 'components/confirmation-message';
 
 import './styles.scss';
 
-const NotFoundPage = (props) => (
-  <Layout {...props}>
+const props = {
+  title: 'Page Not Found',
+  description:
+    'You may have mistyped the address or the page may have moved.',
+  showCookies: false
+}
+
+const NotFoundPage = () => (
+  <Layout {...props} title="Page Not Found | Global Forest Watch">
     <div className="l-404-page">
       <div className="row">
         <div className="column small-12 medium-8 medium-offset-2">
           <ConfirmationMessage
-            title={props.title}
-            description={props.description}
+            {...props}
             error
             large
           />
@@ -22,10 +27,5 @@ const NotFoundPage = (props) => (
     </div>
   </Layout>
 );
-
-NotFoundPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
 
 export default NotFoundPage;

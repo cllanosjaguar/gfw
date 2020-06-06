@@ -1,3 +1,7 @@
+import Router from 'next/router';
+
+const isServer = typeof window === 'undefined';
+
 const googleLangCode = {
   es_MX: 'es',
   en: 'en',
@@ -27,6 +31,11 @@ export const getLanguages = () => {
     }))
   );
 };
+
+export const getActiveLang = () =>
+  Router?.router?.query?.lang ||
+  (!isServer && JSON.parse(localStorage.getItem('txlive:selectedlang'))) ||
+  'en';
 
 export const getGoogleLangCode = lang => googleLangCode[lang || 'en'];
 export const getMomentLangCode = lang => momentLangCode[lang || 'en'];

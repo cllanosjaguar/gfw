@@ -35,15 +35,30 @@ const nextConfig = {
     return config;
   },
   experimental: {
+    async redirects() {
+      return [
+        {
+          source: '/dashboards',
+          destination: `/dashboards/global`,
+          permanent: true
+        },
+        {
+          source: '/topics',
+          destination: `/topics/biodiversity`,
+          permanent: true
+        },
+        {
+          source: '/grants-and-fellowships',
+          destination: `/grants-and-fellowships/projects`,
+          permanent: true
+        },
+      ]
+    },
     async rewrites() {
       return [
         {
           source: '/map',
           destination: '/map/global',
-        },
-        {
-          source: '/dashboards',
-          destination: `/dashboards/global`,
         },
       ];
     },

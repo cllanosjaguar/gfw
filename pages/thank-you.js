@@ -1,8 +1,10 @@
 import Layout from 'app/layouts/root';
 import ThankYou from 'pages/thank-you';
 
-export default (props) => (
-  <Layout {...props}>
+export default () => (
+  <Layout
+    title="Thank you | Global Forest Watch"
+  >
     <ThankYou />
   </Layout>
 );

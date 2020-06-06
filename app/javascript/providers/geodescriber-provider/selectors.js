@@ -6,9 +6,8 @@ import { buildFullLocationName } from 'utils/format';
 import tropicalIsos from 'data/tropical-isos.json';
 
 import { getDataLocation } from 'utils/location';
+import { getActiveLang } from 'utils/lang';
 import { getActiveArea } from 'providers/areas-provider/selectors';
-
-const isServer = typeof window === 'undefined';
 
 const adminSentences = {
   default:
@@ -39,11 +38,6 @@ export const selectCountryData = state =>
     adm1: state.countryData.regions,
     adm2: state.countryData.subRegions
   };
-
-export const selectActiveLang = state =>
-  (state?.location?.query?.lang) ||
-  (!isServer && JSON.parse(localStorage.getItem('txlive:selectedlang'))) ||
-  'en';
 
 export const getAdm0Data = createSelector(
   [selectCountryData],
@@ -255,5 +249,5 @@ export const getGeodescriberProps = createStructuredSelector({
   loading: selectLoading,
   location: getDataLocation,
   geojson: selectGeojson,
-  lang: selectActiveLang
+  lang: getActiveLang
 });

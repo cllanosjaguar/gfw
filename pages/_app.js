@@ -9,7 +9,6 @@ import finallyShim from 'promise.prototype.finally';
 import { decodeParamsForState } from 'utils/stateToUrl';
 
 import reducerRegistry from 'app/registry';
-import routes from 'app/routes';
 import makeStore from 'app/store';
 
 import MyGFWProvider from 'providers/mygfw-provider';
@@ -82,14 +81,12 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, router } = this.props;
-    const { route } = router || {};
-    const routeConfig = routes[route];
+    const { Component, pageProps } = this.props;
 
     return (
       <Provider store={this.store}>
         <MyGFWProvider />
-        <Component {...routeConfig} {...pageProps} />
+        <Component {...pageProps} />
       </Provider>
     );
   }

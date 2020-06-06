@@ -1,5 +1,5 @@
 import React from 'react';
-import routes from 'app/routes';
+import routes from './_routes';
 import {
   APP_URL,
   DEVELOPERS_URL,

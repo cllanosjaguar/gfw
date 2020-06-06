@@ -5,7 +5,7 @@ import sortBy from 'lodash/sortBy';
 import { translateText } from 'utils/transifex';
 
 import { getActiveDatasetsFromState } from 'components/map/selectors';
-import { selectActiveLang } from 'app/layouts/root/selectors';
+import { getActiveLang } from 'utils/lang';
 
 const selectSearch = state =>
   state.location &&
@@ -18,7 +18,7 @@ const selectLocations = state => state.mapMenu && state.mapMenu.locations;
 const selectLoading = state => state.mapMenu && state.mapMenu.loading;
 
 const getDatasetWithUrlState = createSelector(
-  [getActiveDatasetsFromState, selectDatasets, selectActiveLang],
+  [getActiveDatasetsFromState, selectDatasets, getActiveLang],
   (datasetsState, datasets, lang) => {
     const datasetIds = datasetsState.map(d => d.dataset);
 
@@ -37,7 +37,7 @@ const getDatasetWithUrlState = createSelector(
 );
 
 const getFilteredDatasets = createSelector(
-  [getDatasetWithUrlState, selectSearch, selectActiveLang],
+  [getDatasetWithUrlState, selectSearch, getActiveLang],
   (datasets, search) =>
     (search && datasets
       ? datasets.filter(
@@ -70,5 +70,5 @@ export const mapStateToProps = createStructuredSelector({
   search: selectSearch,
   locations: getLocations,
   loading: selectLoading,
-  lang: selectActiveLang
+  lang: getActiveLang
 });

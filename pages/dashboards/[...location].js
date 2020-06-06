@@ -1,25 +1,35 @@
-import PropTypes from 'prop-types';
-
 import Layout from 'app/layouts/root';
 import ConfirmationMessage from 'components/confirmation-message';
 import Dashboards from 'pages/dashboards';
 
-import getLocationData from 'services/location';
+import { getLocationData } from 'services/location';
 
-export const getServerSideProps = getLocationData;
+export const getServerSideProps = async ctx => {
+  const isGlobal = ctx?.params?.location?.[0] === 'global';
+  const locationData = !isGlobal && await getLocationData(ctx?.params?.location) || {};
+  const locationName = isGlobal ? 'Global' : locationData.locationName;
 
-const DashboardsLocationPage = (props) => (
+  return {
+    props: locationName ? {
+      title: `${locationName || 'Global'} Deforestation Rates & Statistics by Country | GFW`,
+      description: ctx?.params?.location?.length > 1 ?
+        'Explore interactive global tree cover loss charts by country. Analyze global forest data and trends, including land use change, deforestation rates and forest fires.' :
+        `Explore interactive tree cover loss data charts and analyze ${locationName} forest trends, including land use change, deforestation rates and forest fires.`,
+      keywords: `${locationName}, deforestation rates, statistics, interactive, data, forest trends, land use, forest cover by country, global tree cover loss`
+    } : {
+      title: 'Dashboard not found'
+    }
+  }
+};
+
+const DashboardsPage = (props) => (
   <Layout {...props}>
-    {props?.locationName?.includes('not found') ? (
-      <ConfirmationMessage title={props.locationName} error large />
-    ) : (
-      <Dashboards />
+    {props?.title === 'Dashboard not found' ? (
+      <ConfirmationMessage title="Dashboard not found" error large />
+      ) : (
+        <Dashboards />
     )}
   </Layout>
 );
 
-DashboardsLocationPage.propTypes = {
-  locationName: PropTypes.string.isRequired,
-};
-
-export default DashboardsLocationPage;
+export default DashboardsPage;

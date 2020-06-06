@@ -5,34 +5,27 @@ import { initGA, handlePageTrack } from 'app/analytics';
 import checkBrowser from 'utils/browser';
 import { MediaContextProvider } from 'utils/responsive';
 
-import Header from 'components/header';
-import Footer from 'components/footer';
-import Cookies from 'components/cookies';
-import ContactUsModal from 'components/modals/contact-us';
-import NavLink from 'components/nav-link';
+import Button from 'components/ui/button';
+import gfwLogo from 'assets/logos/gfw.png';
 
 import Head from 'app/head';
 
 import 'styles/styles.scss';
 import './styles.scss';
 
+const isServer = typeof window === 'undefined';
+
 class App extends PureComponent {
   static propTypes = {
-    loggedIn: PropTypes.bool,
+    fullScreen: PropTypes.bool,
     children: PropTypes.node,
     router: PropTypes.object,
-    fullScreen: PropTypes.bool,
-    showHeader: PropTypes.bool,
-    showFooter: PropTypes.bool,
     title: PropTypes.string,
     description: PropTypes.string,
     keywords: PropTypes.string,
+    titleParams: PropTypes.object,
+    descriptionParams: PropTypes.object,
   };
-
-  static defaultProps = {
-    showHeader: true,
-    showFooter: true
-  }
 
   componentDidMount() {
     const { router } = this.props;
@@ -51,15 +44,18 @@ class App extends PureComponent {
 
   render() {
     const {
-      loggedIn,
-      children,
       fullScreen,
-      showHeader,
-      showFooter,
+      children,
       title,
       description,
       keywords,
+      titleParams,
+      descriptionParams,
+      router
     } = this.props;
+
+    const isGFW = router?.query?.gfw;
+    const isTrase = router?.query?.trase;
 
     return (
       <>
@@ -67,30 +63,31 @@ class App extends PureComponent {
           title={title}
           description={description}
           keywords={keywords}
+          titleParams={titleParams}
+          descriptionParams={descriptionParams}
         />
         <MediaContextProvider>
           <div
-            className={cx('l-root', { '-full-screen': fullScreen })}
+            className={cx('l-embed', {
+              '-trase': isTrase,
+              '-full-screen': fullScreen
+            })}
           >
-            {showHeader && (
-              <Header
-                loggedIn={loggedIn}
-                fullScreen={fullScreen}
-                NavLinkComponent={({
-                  children: headerChildren,
-                  className,
-                  ...props
-                }) => (
-                  <NavLink {...props}>
-                    <a className={className}>{headerChildren}</a>
-                  </NavLink>
-                )}
-              />
-            )}
+            <a className="page-logo" href="/" target="_blank">
+              <img src={gfwLogo} alt="Global Forest Watch" />
+            </a>
             <div className="page">{children}</div>
-            <Cookies />
-            <ContactUsModal />
-            {showFooter && <Footer />}
+            {!isGFW && !isTrase && (
+              <div className="embed-footer">
+                <p>For more info</p>
+                <Button
+                  className="embed-btn"
+                  extLink={!isServer && window.location.href.replace('/embed', '')}
+                >
+                  EXPLORE ON GFW
+                </Button>
+              </div>
+            )}
           </div>
         </MediaContextProvider>
       </>

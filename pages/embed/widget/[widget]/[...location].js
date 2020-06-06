@@ -1,25 +1,19 @@
-import PropTypes from 'prop-types';
-
-import Layout from 'app/layouts/root';
+import LayoutEmbed from 'app/layouts/embed';
+import WidgetEmbed from 'pages/dashboards/components/embed';
 import ConfirmationMessage from 'components/confirmation-message';
-import Dashboards from 'pages/dashboards/components/embed';
 
-import getLocationData from 'services/location';
+import { getServerSideProps as getProps } from '../../../dashboards/[...location]';
 
-export const getServerSideProps = getLocationData;
+export const getServerSideProps = getProps;
 
-const DashboardsLocationPage = (props) => (
-  <Layout {...props}>
-    {props?.locationName?.includes('not found') ? (
-      <ConfirmationMessage title={props.locationName} error large />
-    ) : (
-      <Dashboards />
+const MapEmbedPage = (props) => (
+  <LayoutEmbed {...props}>
+    {props?.title === 'Dashboard not found' ? (
+      <ConfirmationMessage title="Location not found" error large />
+      ) : (
+        <WidgetEmbed embed />
     )}
-  </Layout>
+  </LayoutEmbed>
 );
 
-DashboardsLocationPage.propTypes = {
-  locationName: PropTypes.string.isRequired,
-};
-
-export default DashboardsLocationPage;
+export default MapEmbedPage;

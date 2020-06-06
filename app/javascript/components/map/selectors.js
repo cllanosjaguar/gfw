@@ -6,7 +6,7 @@ import flatMap from 'lodash/flatMap';
 import sortBy from 'lodash/sortBy';
 import { getDayRange } from 'utils/dates';
 
-import { selectActiveLang } from 'app/layouts/root/selectors';
+import { getActiveLang } from 'utils/lang';
 import { getActiveArea } from 'providers/areas-provider/selectors';
 
 import { initialState } from './reducers';
@@ -574,7 +574,7 @@ export const getInteractionSelected = createSelector(
   }
 );
 
-export const getActiveMapLang = createSelector(selectActiveLang, lang => {
+export const getActiveMapLang = createSelector(getActiveLang, lang => {
   if (lang === 'pt_BR') return 'pt';
   if (lang === 'es_MX') return 'es';
   if (lang === 'id') return 'en';
