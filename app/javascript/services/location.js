@@ -1,6 +1,6 @@
 import { CARTO_API } from 'utils/constants';
 import { get } from 'axios';
-import { getGeodescriberService } from 'services/geostore';
+import { getGeodescriber } from 'services/geostore';
 import { getArea } from 'services/areas';
 import lowerCase from 'lodash/lowerCase';
 import startCase from 'lodash/startCase';
@@ -43,7 +43,7 @@ export const config = {
   },
   geostore: {
     adm0: (params) =>
-      getGeodescriberService({ geostore: params.adm0 }).then((response) => {
+      getGeodescriber({ geostore: params.adm0 }).then((response) => {
         const { title, ...props } = response?.data?.data;
 
         return {
@@ -56,7 +56,6 @@ export const config = {
     adm0: (params) =>
       getArea(params.adm0).then((area) => {
         const { name, ...props } = area;
-
         if (name) {
           return {
             locationName: name,
@@ -64,7 +63,7 @@ export const config = {
           };
         }
 
-        return getGeodescriberService(area).then((response) => {
+        return getGeodescriber(area).then((response) => {
           const geodescriber = response?.data?.data;
 
           return {
@@ -95,7 +94,7 @@ export const config = {
   },
 };
 
-export const getLocationData = async params => {
+export const getLocationData = async (params) => {
   const location = {
     type: params?.[0],
     adm0: params?.[1],
